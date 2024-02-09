@@ -1,16 +1,17 @@
 <body>
     <% layout("/layouts/boilerplate") %>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+
     <% for(let listing of alllistings){ %>
-    <div class="card" style="width: 18rem;">
-        <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image">
+    <div class="card col" style="width: 20rem;">
+        <img src="<%= listing.image %>" class="card-img-top" alt="listing_image">
         <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">
+           <b> <%= listing.title %></b><br>
+            &#8377; <%= listing.price.toLocaleString('en-IN') %>
+          </p>
         </div>
       </div>
       <% } %>
- <ul>
-    <% for(let listing of alllistings){ %>
-        <li><a href="/listing/<%= listing._id %>"><%= listing.title %></a></li>
-<% } %>
-</ul>
+    </div>
 </body>
