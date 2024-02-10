@@ -1,0 +1,10 @@
+
+<body>
+    
+    <% layout("/boilerplate/boilerplate") %>
+    <h1>Home page</h1>
+
+    <% for(let d of garageData){ %>
+   <a href="/home/<%= d._id  %>/show"> <p><%= d.name %></p></a>
+    <% } %>
+</body>
