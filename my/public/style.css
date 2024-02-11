@@ -2,9 +2,16 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh !important;
-    background: url("https://c4.wallpaperflare.com/wallpaper/300/983/797/need-for-speed-grey-toyota-supra-wallpaper-preview.jpg") !important;
-
+    position: relative !important;
+    background-color: #383131 !important;
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/300/983/797/need-for-speed-grey-toyota-supra-wallpaper-preview.jpg");
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    
 }
+
 
 
 
@@ -14,14 +21,13 @@ body {
 
 /* navbar */
 .navbar {
-    padding: 10rem 1rem;
-    /* background-color: #1a1919 !important; */
+    padding: 1rem 2rem !important;
+    background-color:#1F2544; 
 }
-/* 
-.fa-compass {
-    color: #fe424d;
-    font-size: 2rem;
-} */
+.navbar a{
+    color: rgb(255, 255, 255) !important;
+
+}
 
 
 /* Home Route ================ */
@@ -41,8 +47,11 @@ body {
 }
 /* Cards */
 .card {
+    background-color:#000000ab !important;
+    padding: 1.5rem;
     border: none !important;
     margin-bottom: 2rem;
+    color: beige !important;
 
 }
 

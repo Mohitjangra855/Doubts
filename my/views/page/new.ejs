@@ -1,11 +1,51 @@
 <body>
     <% layout("/boilerplate/boilerplate") %>
-        <p>Create your Post:</p>
-        <form action="/home" method="post">
-            <label for="name">Name :</label>
-            <input type="text" name="car[name]" placeholder="Car Name">
-            <label for="Image">Image URL :</label>
-            <input type="text" name="car[Image]" placeholder="Car image url">
-            <button>Add</button>
-        </form>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <br>
+                <br>
+                <p>Enter Car Details:</p>
+                <form action="/home" method="post">
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Car Name:</label>
+                        <input type="text" name="car[name]" placeholder="Enter Car Name" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="img" class="form-label">Image URL :</label>
+                        
+                        <input type="text" name="car[Image]" placeholder="Image URL" class="form-control">
+                       
+                    </div>
+                   
+                    <div class="row">
+
+                        <div class="mb-3 col-md-4">
+                            <label for="speed" class="form-label">Speed:</label>
+                        
+                            <input type="number" name="car[speed]" placeholder="Enter Car speed" class="form-control">
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="hp" class="form-label">Horsepower:</label>
+                        
+                            <input type="number" name="car[hp]" placeholder="Enter Car hp" class="form-control">
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label for="Price" class="form-label">Price:</label>
+                        
+                            <input type="number" name="car[price]" placeholder="Enter Car price" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <br>
+                    <button class="btn btn-dark add-btn">Add</button>
+                    <br>
+                    <br>
+
+
+            </div>
+
+
+</body>
+</form>
 </body>
