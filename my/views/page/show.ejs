@@ -1,12 +1,43 @@
 <body>
-  <%- layout("/boilerplate/boilerplate") %>
+  <% layout("/boilerplate/boilerplate") %>
     <h1>Full Details of Car</h1>
-    <p>
-      <%= garageData.name %>
-    </p>
+    <div class="row mt-3">
+      <div class="col-8 offset-2">
 
-    <a href="/home/<%= garageData._id  %>/edit">Edit</a>
-    <form action="/home/<%= garageData._id  %>?_method=delete" method="post">
-      <button>Delete</button>
-    </form>
+          <h3>Listing Details</h3>
+      </div>
+
+      <div class="card col-6 offset-2">
+          <img src="<%= garageData.Image %>" class="card-img-top show-img" alt="car_image">
+          <div class="card-body">
+              <p class="card-text mt-2 mb-2">
+                  <b> Car name : </b>
+                  <%= garageData.name %>
+              </p>
+              <p class="card-text mb-2">
+                  <b>Price :</b>
+                  &#8377;  <%= garageData.price %>
+              </p>
+             
+              <p class="card-text mb-2">
+                  <b>Top speed :</b>
+                  <%= garageData.speed %> k/h
+              </p>
+              <p class="card-text">
+                  <b>Hp :</b>
+                  <%= garageData.hp %>
+              </p>
+          </div>
+      </div>
+
+      <div class="col-8 offset-2 btns">
+
+          <a href="/home/<%= garageData._id  %>/edit" class="btn btn-dark add-btn ">Edit</a>
+          <form action="/home/<%= garageData._id  %>?_method=delete" method="post">
+
+              <button class="btn btn-dark">Delete</button>
+          </form>
+      </div>
+    </div>
+
 </body>

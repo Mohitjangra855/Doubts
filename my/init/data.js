@@ -1,112 +1,57 @@
 const sampleListings = [
-  {
-    name: "Cozy Beachfront Cottage",
-  hp:100,
-  speed:200,
-    image:
-
-      "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-
-    price: 1500
-   
-  },
-  {
-    name: "Modern Loft in Downtown",
-    hp:100,
-    speed:200,
-    image:
-
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-
-    price: 1200,
-   
-  },
-  {
-    name: "Mountain Retreat",
-    hp:100,
-    speed:200,
-    image:
-
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aG90ZWxzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-
-    price: 1000,
-   
-  },
-  {
-    name: "Historic Villa in Tuscany",
-    hp:100,
-    speed:200,
-    image:
-
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWxzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-
-    price: 2500,
+    {
+      name: 'supra',
+      hp: 1000,
+      speed: 600,
+      Image: "https://w0.peakpx.com/wallpaper/173/1006/HD-wallpaper-toyota-supra.jpg",
+      price: 2000000,
+      __v: 0
+    },
+    {
     
-  },
-  {
-    name: "Secluded Treehouse Getaway",
-    hp:100,
-  speed:200,
-    image:
-
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGhvdGVsc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-
-    price: 800,
-    
-  },
-  {
-    name: "Beachfront Paradise",
-    hp:100,
-    speed:200,
-    image:
-
-      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGhvdGVsc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-
-    price: 2000,
-  
-  },
-  {
-    name: "Rustic Cabin by the Lake",
-    hp:100,
-    speed:200,
-    image:
-
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vdW50YWlufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-
-    price: 900,
+      name: 'DODGE Challenger SRT',
+      hp: 797,
+      speed: 430,
+      Image: 'https://www.dodge.com/content/dam/fca-brands/na/dodge/en_us/2023/challenger/gallery/exterior/MY23_Challenger_Gallery_01.jpg.image.1000.jpg',
+      price: 1350000,
+      __v: 0
+    },
+    {
+     
+      name: 'DODGE Challenger SRT',
+      hp: 800,
+      speed: 395,
+      Image: 'https://www.dodge.com/content/dam/fca-brands/na/dodge/en_us/2023/challenger/gallery/exterior/MY23_Challenger_Gallery_02.jpg.image.1000.jpg',
+      price: 1600000,
+      __v: 0
+    },
+    {
    
-  },
-  {
-    name: "Luxury Penthouse with City Views",
-    hp:100,
-    speed:200,
-    image:
+      name: 'AUDI R8',
+      hp: 300,
+      speed: 340,
+      Image: 'https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      price: 800000,
+      __v: 0
+    },
+    {
 
-      "https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2t5JTIwdmFjYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
+      name: 'Ford SUV',
+      hp: 250,
+      speed: 200,
+      Image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D',
+      price: 100000,
+      __v: 0
+    },
+    {
+      
+      name: 'Mustang',
+      hp: 352,
+      speed: 300,
+      Image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      price: 999999,
+      __v: 0
+    }
+  ];
 
-    price: 3500,
-   
-  },
-  
-  {
-    name: "Beachfront Villa in Greece",
-    hp:100,
-    speed:200,
-    image: "https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dmlsbGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
-
-    price: 2500,
-  
-  },
-  {
-    name: "Eco-Friendly Treehouse Retreat",
-    hp:100,
-  speed:200,
-    image: "https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c2t5JTIwdmFjYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
-
-    price: 750,
-   
-  },
-
-];
-
-module.exports = { data: sampleListings };
+  module.exports = { data: sampleListings };
