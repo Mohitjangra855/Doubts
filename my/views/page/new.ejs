@@ -1,11 +1,11 @@
 <body>
-    <p>Create your Post:</p>
     <% layout("/boilerplate/boilerplate") %>
-    <form action="/home" method="post">
-        <label for="name">Name :</label>
-        <input type="text" name="car[name]" placeholder="Car Name">
-
-
-<button>Add</button>
-    </form>
+        <p>Create your Post:</p>
+        <form action="/home" method="post">
+            <label for="name">Name :</label>
+            <input type="text" name="car[name]" placeholder="Car Name">
+            <label for="img">Image URL :</label>
+            <input type="text" name="car[image]" placeholder="Car image url">
+            <button>Add</button>
+        </form>
 </body>

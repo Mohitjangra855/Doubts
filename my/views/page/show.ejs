@@ -1,10 +1,12 @@
-
 <body>
-    <%- layout("/boilerplate/boilerplate")  %>
+  <%- layout("/boilerplate/boilerplate") %>
     <h1>Full Details of Car</h1>
-    <p><%= garageData.name  %></p>
+    <p>
+      <%= garageData.name %>
+    </p>
+
     <a href="/home/<%= garageData._id  %>/edit">Edit</a>
-  <form action="/home/<%= garageData._id  %>?_method=delete" method="post">
-    <button>Delete</button>
-  </form>
+    <form action="/home/<%= garageData._id  %>?_method=delete" method="post">
+      <button>Delete</button>
+    </form>
 </body>

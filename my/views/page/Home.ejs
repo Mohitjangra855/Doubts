@@ -1,10 +1,12 @@
-
 <body>
-    
-    <% layout("/boilerplate/boilerplate") %>
-    <h1>Home page</h1>
 
-    <% for(let d of garageData){ %>
-   <a href="/home/<%= d._id  %>/show"> <p><%= d.name %></p></a>
-    <% } %>
+    <% layout("/boilerplate/boilerplate") %>
+        <% for(let d of garageData){ %>
+            <a href="/home/<%= d._id  %>/show">
+                <p>
+                    <%= d.name %>
+                </p>
+                <img src="<%= d.Image  %>" alt="car_image">
+            </a>
+        <% } %>
 </body>

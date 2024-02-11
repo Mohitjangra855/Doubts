@@ -27,7 +27,7 @@ async function main() {
 app.listen(port, () => {
     console.log("App is listing..")
 })
-// Root Route......................
+// Root Route.......................
 app.get("/", async(req, res) => {
    
     res.render("page/root.ejs")
@@ -75,4 +75,9 @@ app.delete("/home/:id", async (req, res) => {
     let { id } = req.params
     let garageData = await Garage.findByIdAndDelete({_id: id})
     res.redirect("/home");
+})
+// search.........
+app.post("/home/show",(req,res)=>{
+    let a = req.query;
+    console.log(a);
 })
