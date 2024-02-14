@@ -1,0 +1,54 @@
+div {
+    margin: 1rem;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.247);
+    width: 200px;
+    color: rgba(3, 94, 97, 0.582);
+    display: flex;
+    display: inline-block;
+}
+
+.msg {
+    max-width: calc(100% - 6rem);
+    color: white;
+
+}
+
+button {
+    margin-left: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    background-color: rgb(21, 74, 219);
+    color: white;
+    box-shadow: 1px 3px 5px black;
+    border: none;
+    cursor: pointer;
+
+}
+
+button:hover {
+    box-shadow: inset 1px 3px 5px black;
+
+
+}
+.delete>a{
+    padding: 0.5rem;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: rgb(21, 74, 219);
+    color: white;
+    box-shadow: 1px 3px 5px black;
+    border: none;
+    cursor: pointer;
+}
+.delete>a:hover{
+    box-shadow: inset 1px 3px 5px black; 
+}
+
+.delete>button {
+    margin: 0;
+    padding: 0.5rem;
+
+
+}
