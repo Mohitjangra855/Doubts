@@ -1,0 +1,26 @@
+<title>All cars</title>
+<% layout("/boilerplate/boilerplate") %>
+<body>
+
+
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-2">
+                <% for(let data of garageData){ %>
+                    <a href="/home/<%= data._id  %>/show" class="listing-link">
+                        <div class="card col">
+    
+                            <img src="<%= data.Image %>" class="card-img-top" alt="car_image" style="height: 20rem;">
+                            <div class="card-img-overlay"></div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <b>
+                                        <%= data.name %>
+                                    </b><br>
+                                    &#8377; <%= data.price%>
+                                </p>
+                            </div>
+    
+                        </div>
+                    </a>
+                    <% } %>
+            </div>
+</body>

@@ -1,0 +1,51 @@
+<%=  layout("/boilerplate/boilerplate") %>
+<body>
+<form action="/home/<%= garageData._id %>?_method=put" method="post" class="needs-validation" novalidate>
+    <div class="mb-3">
+           <label for="title" class="form-label" >name:</label>
+           <input type="text" name="car[name]"  class="form-control"  value="<%= garageData.name %>" required>
+           <div class="valid-feedback">Success</div>
+           <div class="invalid-feedback">Enter car name !</div>
+       </div>
+     
+       <div class="mb-3">
+           <label for="image" class="form-label">Image URL:</label>
+   
+           <input type="text" name="car[Image]" placeholder="Enter Your Image URL" class="form-control"  value="<%= garageData.Image %>" required>
+           <div class="valid-feedback">Success</div>
+           <div class="invalid-feedback">Enter car image URL !</div>
+       </div>
+       <div class="row">
+   
+           <div class="mb-3 col-md-4">
+               <label for="speed" class="form-label">Price:</label>
+               
+               <input type="text" name="car[speed]" placeholder="Enter speed" class="form-control"  value="<%= garageData.speed %>" required>
+               <div class="valid-feedback">Success</div>
+               <div class="invalid-feedback">Enter speed !</div>
+           </div>
+           <div class="mb-3 col-md-4">
+               <label for="hp" class="form-label">Hp:</label>
+               
+               <input type="text" name="car[hp]" placeholder="Enter hp" class="form-control"  value="<%= garageData.hp %>" required>
+               <div class="valid-feedback">Success</div>
+               <div class="invalid-feedback">Enter car !</div>
+            </div>
+            <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">Price:</label>
+                
+                <input type="text" name="car[price]" placeholder="Enter price" class="form-control"  value="<%= garageData.price %>" required>
+                <div class="valid-feedback">Success</div>
+                <div class="invalid-feedback">Enter price !</div>
+            </div>
+          
+       </div>
+       
+       <br>
+    <button class="btn btn-dark add-btn">Save</button>
+       <br>
+       <br>
+      
+   
+   </form>
+</body>

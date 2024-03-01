@@ -1,0 +1,76 @@
+<body>
+    <% layout("/boilerplates/boilerplate") %>
+        <form class="row g-3 needs-validation" action="/<%= data._id %>?_method=Put" method="post" novalidate>
+            <div class="col-12">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="listing[title]" class="form-control" value="<%= data.title  %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please choose a title.
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="description">Description:</label>
+
+                <textarea name="listing[description]" id="description" cols="30" rows="5" class="form-control"
+                    placeholder="enter your description" required><%= data.description  %></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a description.
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="image">Image URL:</label>
+                <input type="text" id="image" name="listing[image]" class="form-control" value="<%= data.image  %>" placeholder="enter image url" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a image URL.
+                </div>
+            </div>
+            <div class="col-6">
+                <label for="price">Price :</label>
+                <input type="text" id="price" name="listing[price]" value="<%= data.price  %>" class="form-control" placeholder="enter price"
+                    required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter price.
+                </div>
+            </div>
+            <div class="col-6">
+                <label for="country">Country :</label>
+                <input type="text" id="country" name="listing[country]" value="<%= data.country  %>" class="form-control" placeholder="enter country"
+                    required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter country.
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="location">Location :</label>
+                <input type="text" id="location" name="listing[location]" value="<%= data.location  %>" class="form-control"
+                    placeholder="enter location" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter location.
+                </div>
+            </div>
+
+
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+</body>

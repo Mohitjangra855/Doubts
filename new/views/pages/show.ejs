@@ -1,0 +1,57 @@
+<body>
+    <% layout("/boilerplates/boilerplate") %>
+
+
+        <div class="row row-cols-lg-12 row-cols-md-8 row-cols-sm-1 mt-3">
+            <div class="card col">
+
+                <img src="<%= data.image %>" class="card-img-top mt-2" alt="listing_image" style="height: 20rem;">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                    <p class="card-text"> title : <%= data.title %>
+                    </p>
+                    <p class="card-text"> description : <%= data.description %>
+                    </p>
+                    <p class="card-text"> price : <%= data.price %>
+                    </p>
+                    <p class="card-text"> location : <%= data.location %>
+                    </p>
+                    <p class="card-text"> country : <%= data.country %>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <a href="/<%= data._id %>/edit" class="btn btn-success mt-2">Edit</a>
+        <form action="/<%= data._id %>?_method=delete" method="post" class="mt-2 mb-2">
+            <button class="btn btn-dark">Delete</button>
+        </form>
+       
+        <h3> Add reviews: </h3>
+        <form action="/<%= data._id  %>/review" method="post">
+            <label for="rating" class="form-label">Rate:</label>
+            <input type="range" min="1" max="5" class="form-range rating" name="review[rate]">
+            <label for="comment" class="form-label">Comment:</label>
+            <textarea name="review[comment]" cols="30" rows="5" placeholder="Enter your Comment" class="form-control"
+                id="comment" required></textarea>
+
+            <br>
+            <button class="btn btn-danger">Add</button>
+        </form>
+        <h3 class="mt-2">All reviews:</h3>
+        <% for(dr of data.review){ %>
+            <div class="card mt-2 p-2">
+                <p class="card-text">Rating: <%= dr.rate %>
+                </p>
+                <p class="card-text">Comment: <%= dr.comment %>
+                </p>
+
+                <form action="/<%= data._id  %>/review/<%= dr._id %>?_method=Delete" method="post">
+                    <button class="btn btn-dark ">Delete</button>
+                </form>
+            </div>
+            <% } %>
+
+
+</body>

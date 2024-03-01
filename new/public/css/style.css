@@ -1,0 +1,8 @@
+/* listing-link */
+
+.listing-link {
+    text-decoration: none;
+}
+.listing-link:hover {
+    text-decoration: underline;
+}
