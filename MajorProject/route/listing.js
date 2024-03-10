@@ -20,7 +20,7 @@ let validateSchema = (req, res, next) => {
 // index root.....................
 Route.get("/", wrapAsync(async (req, res) => {
     const alllistings = await Listing.find();
-    
+    req.flash("success","new listing added...");
     res.render("listing/index.ejs", { alllistings });
 
 })
@@ -79,6 +79,7 @@ Route.delete("/:id", wrapAsync(async (req, res) => {
             await Review.findByIdAndDelete(review._id);
         }
     }
+    req.flash("delete"," listing deleted!");
     res.redirect("/listing");
     console.log(deletedListing);
 }));
