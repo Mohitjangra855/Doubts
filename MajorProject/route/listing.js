@@ -20,7 +20,7 @@ let validateSchema = (req, res, next) => {
 // index root.....................
 Route.get("/", wrapAsync(async (req, res) => {
     const alllistings = await Listing.find();
-    req.flash("success","new listing added...");
+    
     res.render("listing/index.ejs", { alllistings });
 
 })
@@ -37,6 +37,7 @@ Route.post("/",validateSchema, wrapAsync(async (req, res, next) => {
 
     let newListing = new Listing(req.body.listing);
     await newListing.save();
+    req.flash("success","New listing added...");
     res.redirect("/listing");
     console.log("added data");
 
@@ -47,7 +48,10 @@ Route.post("/",validateSchema, wrapAsync(async (req, res, next) => {
 Route.get("/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
     const alllistings = await Listing.findById(id).populate("reviews");
-
+if(!alllistings){
+    req.flash("error","listing is not exists...");
+    res.redirect("/listing")
+}
     res.render("listing/show.ejs", { alllistings })
 
 }))
@@ -63,6 +67,7 @@ Route.get("/:id/edit", wrapAsync(async (req, res) => {
 Route.put("/:id", validateSchema, wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndUpdate(id, { ...req.body.listing })
+    req.flash("success","Listing Updated...");
     res.redirect(`/listing/${id}`);
 
 }))

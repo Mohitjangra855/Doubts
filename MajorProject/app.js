@@ -11,7 +11,10 @@ const ExpressError = require("./utils/ExpressError.js");
 const listings = require("./route/listing");
 const reviews = require("./route/review");
 const session = require("express-session");
-const flash = require("connect-flash")
+const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js")
 
 app.engine("ejs", ejsMate);
 app.use(express.json());
@@ -33,6 +36,12 @@ const sessionOption = {
 };
 app.use(session(sessionOption));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // Mongoose Connect ..............
 
@@ -61,8 +70,22 @@ app.get("/", (req, res) => {
 app.use((req, res, next) => {
     res.locals.successMsg = req.flash("success");
     res.locals.deleteMsg = req.flash("delete");
+    res.locals.errorMsg = req.flash("error");
     next();
 })
+
+//demo user................
+
+app.get("/demouser",async (req,res)=>{
+let fakeUser= new User({
+    email:"abc@gmail.com",
+    username:"abc",
+})
+const registerUser = await User.register(fakeUser,"helloworld");
+res.send(registerUser);
+})
+
+
 
 app.use("/listing", listings);
 app.use("/listing/:id/reviews", reviews)
