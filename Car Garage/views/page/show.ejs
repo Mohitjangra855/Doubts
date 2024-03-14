@@ -1,0 +1,72 @@
+
+
+        <% layout("/boilerplate/boilerplate") %>
+        <div class="row mt-3 mb-3">
+            <div class="col-8 offset-2">
+                <h1>Details of Car</h1>
+
+
+            </div>
+
+            <div class="card col-6 offset-2">
+                <img src="<%= garageData.Image %>" class="card-img-top show-img" alt="car_image">
+                <div class="card-body">
+                    <p class="card-text mt-2 mb-2">
+                        <b> Car name : </b>
+                        <%= garageData.name %>
+                    </p>
+                    <p class="card-text mb-2">
+                        <b>Price :</b>
+                        &#8377; <%= garageData.price %>
+                    </p>
+
+                    <p class="card-text mb-2">
+                        <b>Top speed :</b>
+                        <%= garageData.speed %> km/h
+                    </p>
+                    <p class="card-text">
+                        <b>Hp :</b>
+                        <%= garageData.hp %>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-8 offset-2 btns">
+
+                <a href="/home/<%= garageData._id  %>/edit" class="btn btn-dark add-btn ">Edit</a>
+                <form action="/home/<%= garageData._id  %>?_method=delete" method="post">
+
+                    <button class="btn btn-dark">Delete</button>
+                </form>
+            </div>
+            <div class="col-8 offset-2">
+                <h5>Add Review:</h5>
+
+                <form action="/home/<%= garageData._id %>/show/review" method="post">
+                    <label for="rate">Rating :</label>
+                    <input type="range" min="1" max="5" id="rate" class="form-range" name="review[rate]">
+                    <label for="comment">Comment:</label>
+                    <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control"
+                        placeholder="Enter your comment :"></textarea>
+                    <button class="btn btn-danger mt-2 mb-2">Add</button>
+                </form>
+
+            </div>
+            <% for(review of garageData.reviews){ %>
+                <div class="card review-card col-5 mb-3 ms-3">
+                    <div class="form-control">
+                        <p><b>User:</b></p>
+                        <p>
+                            <%= review.comment %>
+                        </p>
+                        <p>
+                            <%= review.rate%> stars
+                        </p>
+                        
+                        <form action="/home/<%= garageData._id %>/show/review/<%= review._id %>?_method=delete" method="post">
+                        <button class="btn btn-success">Delete</button></form>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+
