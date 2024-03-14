@@ -10,4 +10,4 @@ let userSchema = new Schema({
     // username or password automatic apna passport-local-mongoose define kar deta hai 
 })
 userSchema.plugin(passportLocalMongoose);
-module.exports = Schema("User",userSchema);
+module.exports = mongoose.model("User",userSchema);

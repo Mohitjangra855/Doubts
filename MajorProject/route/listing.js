@@ -2,9 +2,9 @@ const express = require("express");
 const Route = express.Router();
 const wrapAsync = require("../utils/wrapasync");
 const ExpressError = require("../utils/ExpressError.js");
-const {listingSchema } = require("../schema.js")
+const { listingSchema } = require("../schema.js")
 const Listing = require("../models/listing.js");
-
+const { isLoggedIn } = require("../middelware.js");
 
 let validateSchema = (req, res, next) => {
     let { error } = listingSchema.validate(req.body);
@@ -20,7 +20,7 @@ let validateSchema = (req, res, next) => {
 // index root.....................
 Route.get("/", wrapAsync(async (req, res) => {
     const alllistings = await Listing.find();
-    
+
     res.render("listing/index.ejs", { alllistings });
 
 })
@@ -28,16 +28,16 @@ Route.get("/", wrapAsync(async (req, res) => {
 
 // new root.....................
 
-Route.get("/new", (req, res) => {
-
+Route.get("/new",isLoggedIn, (req, res) => {
     res.render("listing/new.ejs");
+
 })
 
-Route.post("/",validateSchema, wrapAsync(async (req, res, next) => {
+Route.post("/",isLoggedIn, validateSchema, wrapAsync(async (req, res, next) => {
 
     let newListing = new Listing(req.body.listing);
     await newListing.save();
-    req.flash("success","New listing added...");
+    req.flash("success", "New listing added...");
     res.redirect("/listing");
     console.log("added data");
 
@@ -48,15 +48,15 @@ Route.post("/",validateSchema, wrapAsync(async (req, res, next) => {
 Route.get("/:id", wrapAsync(async (req, res) => {
     let { id } = req.params;
     const alllistings = await Listing.findById(id).populate("reviews");
-if(!alllistings){
-    req.flash("error","listing is not exists...");
-    res.redirect("/listing")
-}
+    if (!alllistings) {
+        req.flash("error", "listing is not exists...");
+        res.redirect("/listing")
+    }
     res.render("listing/show.ejs", { alllistings })
 
 }))
 // Edit root.....................
-Route.get("/:id/edit", wrapAsync(async (req, res) => {
+Route.get("/:id/edit",isLoggedIn, wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
 
@@ -64,17 +64,17 @@ Route.get("/:id/edit", wrapAsync(async (req, res) => {
 
 }))
 // update route.....................
-Route.put("/:id", validateSchema, wrapAsync(async (req, res) => {
+Route.put("/:id",isLoggedIn, validateSchema, wrapAsync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndUpdate(id, { ...req.body.listing })
-    req.flash("success","Listing Updated...");
+    req.flash("success", "Listing Updated...");
     res.redirect(`/listing/${id}`);
 
 }))
 
 // Delete root.....................
 
-Route.delete("/:id", wrapAsync(async (req, res) => {
+Route.delete("/:id",isLoggedIn, wrapAsync(async (req, res) => {
     let { id } = req.params;
     let listing = await Listing.findById(id).populate('reviews');
     let deletedListing = await Listing.findByIdAndDelete(id);
@@ -84,7 +84,7 @@ Route.delete("/:id", wrapAsync(async (req, res) => {
             await Review.findByIdAndDelete(review._id);
         }
     }
-    req.flash("delete"," listing deleted!");
+    req.flash("delete", " listing deleted!");
     res.redirect("/listing");
     console.log(deletedListing);
 }));

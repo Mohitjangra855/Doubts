@@ -8,14 +8,19 @@ const ejsMate = require("ejs-mate");
 const methodOverride = require('method-override');
 // const cookieParser = require("cookie-parser");
 const ExpressError = require("./utils/ExpressError.js");
-const listings = require("./route/listing");
-const reviews = require("./route/review");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js")
 
+
+// Routers.......................................
+const listingRouter = require("./route/listing");
+const reviewRouter = require("./route/review");
+const userRouter = require("./route/user");
+
+// Middlewares...................................
 app.engine("ejs", ejsMate);
 app.use(express.json());
 app.use(methodOverride("_method"));
@@ -39,6 +44,8 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// passport option copy and paste from passport-local-mongoose
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -62,34 +69,41 @@ app.listen(port, () => {
     console.log("App is listening...................");
 })
 
+// route...........................................
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) => {s
     res.send("go to /listing")
 })
 
+// Flash.............................................
 app.use((req, res, next) => {
     res.locals.successMsg = req.flash("success");
     res.locals.deleteMsg = req.flash("delete");
     res.locals.errorMsg = req.flash("error");
+    res.locals.currUser = req.user;
     next();
 })
 
 //demo user................
 
-app.get("/demouser",async (req,res)=>{
-let fakeUser= new User({
-    email:"abc@gmail.com",
-    username:"abc",
-})
-const registerUser = await User.register(fakeUser,"helloworld");
-res.send(registerUser);
-})
+// app.get("/demouser",async (req,res)=>{
+// let fakeUser= new User({
+//     email:"abc@gmail.com",
+//     username:"abc",
+// })
+// const registerUser = await User.register(fakeUser,"helloworld");
+// res.send(registerUser);
+// })
+
+
+// Router use ................................
+app.use("/listing", listingRouter);
+app.use("/listing/:id/reviews", reviewRouter)
+app.use("/", userRouter);
 
 
 
-app.use("/listing", listings);
-app.use("/listing/:id/reviews", reviews)
-
+// Error-handler.......................................
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page Not Exists..!"));
 })
