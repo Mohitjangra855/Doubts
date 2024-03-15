@@ -69,11 +69,7 @@ app.listen(port, () => {
     console.log("App is listening...................");
 })
 
-// route...........................................
 
-app.get("/", (req, res) => {s
-    res.send("go to /listing")
-})
 
 // Flash.............................................
 app.use((req, res, next) => {
@@ -83,7 +79,11 @@ app.use((req, res, next) => {
     res.locals.currUser = req.user;
     next();
 })
+// route...........................................
 
+app.get("/", (req, res) => {
+    res.send("go to /listing")
+})
 //demo user................
 
 // app.get("/demouser",async (req,res)=>{
