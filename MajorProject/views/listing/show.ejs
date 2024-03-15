@@ -11,7 +11,12 @@
             <div class="card col-8 offset-2 ">
                 <img src="<%= alllistings.image %>" class="card-img-top show-img" alt="listing_image">
                 <div class="card-body">
-                    <p class="card-text mt-2 mb-2">
+                    <p class="card-text mb-2">
+                       <i>
+                        Owned by : <%= alllistings.owner[0].username %>
+                        </i>
+                    </p>
+                    <p class="card-text mb-2">
                         <b> Title : </b>
                         <%= alllistings.title %>
                     </p>
@@ -33,60 +38,64 @@
                 </div>
             </div>
 
-            <div class="col-8 offset-2 btns">
+            
+                <div class="col-8 offset-2 btns">
 
-                <a href="/listing/<%= alllistings._id %>/edit" class="btn btn-dark add-btn ">Edit</a>
-                <form action="/listing/<%= alllistings._id %>?_method=delete" method="post">
+                    <form action="/listing/<%= alllistings._id %>?_method=delete" method="post">
 
-                    <button class="btn btn-dark">Delete</button>
-                </form>
-            </div>
-            <div class="col-8 offset-2">
-                <hr>
-                <h4>Leave a Review</h4>
-                <form action="/listing/<%= alllistings._id %>/reviews" method="post" novalidate
-                    class="needs-validation">
-                    <div>
-                        <label for="rating" class="form-label">Rating:</label>
-                        <input type="range" id="rating" min="1" max="5" name="review[rating]" class="form-range rating">
-                    </div>
-                    <div>
-                        <label for="comment" class="form-label">comment:</label>
-                        <textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control comment"
-                            required></textarea>
-                        <div class="valid-feedback">Success...</div>
-                        <div class="invalid-feedback">Please Enter the Comment</div>
-                    </div>
-                    <button class="btn btn-outline-dark mt-3 mb-3">Submit</button>
-                </form>
-                <hr>
-                <p><b>All Reviews:</b></p>
-                <div class="row">
+                        <a href="/listing/<%= alllistings._id %>/edit" class="btn btn-dark add-btn ">Edit</a>
+                        <button class="btn btn-dark">Delete</button>
 
-                    <% for(review of alllistings.reviews){ %>
-
-                        <div class="card review-card col-5 mb-3 ms-3">
-                            <div class="card-body">
-                                <h6 class="card-title">User</h6>
-                                <p class="card-text mb-0">
-                                    <%= review.comment %>
-                                </p>
-                                <p class="card-text">
-                                    <%= review.rating %> stars
-                                </p>
+                    </form>
+                </div>
+              
+                    <div class="col-8 offset-2">
+                        <hr>
+                        <h4>Leave a Review</h4>
+                        <form action="/listing/<%= alllistings._id %>/reviews" method="post" novalidate
+                            class="needs-validation">
+                            <div>
+                                <label for="rating" class="form-label">Rating:</label>
+                                <input type="range" id="rating" min="1" max="5" name="review[rating]"
+                                    class="form-range rating">
                             </div>
-                            <form action="/listing/<%= alllistings._id %>/reviews/<%= review._id  %>"
-                                method="get" class="mt-2">
-                                <button class="btn btn-sm btn-dark">Delete</button>
-                            </form>
+                            <div>
+                                <label for="comment" class="form-label">comment:</label>
+                                <textarea name="review[comment]" id="comment" cols="30" rows="5"
+                                    class="form-control comment" required></textarea>
+                                <div class="valid-feedback">Success...</div>
+                                <div class="invalid-feedback">Please Enter the Comment</div>
+                            </div>
+                            <button class="btn btn-outline-dark mt-3 mb-3">Submit</button>
+                        </form>
+                        <hr>
+                        <p><b>All Reviews:</b></p>
+                        <div class="row">
+
+                            <% for(review of alllistings.reviews){ %>
+
+                                <div class="card review-card col-5 mb-3 ms-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">user</h6>
+                                        <p class="card-text mb-0">
+                                            <%= review.comment %>
+                                        </p>
+                                        <p class="card-text">
+                                            <%= review.rating %> stars
+                                        </p>
+                                    </div>
+                                    <form action="/listing/<%= alllistings._id %>/reviews/<%= review._id  %>"
+                                        method="get" class="mt-2">
+                                        <button class="btn btn-sm btn-dark">Delete</button>
+                                    </form>
+                                </div>
+
+
+
+                                <% } %>
                         </div>
 
-
-
-                        <% } %>
-                </div>
-
-            </div>
+                    </div>
         </div>
 
 </body>
