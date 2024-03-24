@@ -8,12 +8,11 @@ const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const port = 8080;
-
 const ejsMate = require("ejs-mate");
 const methodOverride = require('method-override');
-// const cookieParser = require("cookie-parser");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const mongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -34,6 +33,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
+const dbUrl = process.env.ATLASDB_URL;
+
 const sessionOption = {
     secret: 'fsdhgkjhgsdkljgh',
     resave: false,
@@ -44,6 +45,10 @@ const sessionOption = {
         httpOnly: true
     }
 };
+// const store=mongoStore.create({
+//     mongoUrl:dbUrl,
+// });
+
 app.use(session(sessionOption));
 app.use(flash());
 app.use(passport.initialize());
@@ -56,6 +61,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Mongoose Connect ..............
+// const mongoUrl = 
+// const dbUrl ="mongodb://127.0.0.1:27017/wanderlust";
 
 main()
     .then(() => {
@@ -66,7 +73,7 @@ main()
     })
 
 async function main() {
-    await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
+    await mongoose.connect(dbUrl);
 }
 
 
@@ -84,22 +91,6 @@ app.use((req, res, next) => {
     res.locals.currUser = req.user;
     next();
 })
-// route...........................................
-
-app.get("/", (req, res) => {
-    res.send("go to /listing")
-})
-//demo user................
-
-// app.get("/demouser",async (req,res)=>{
-// let fakeUser= new User({
-//     email:"abc@gmail.com",
-//     username:"abc",
-// })
-// const registerUser = await User.register(fakeUser,"helloworld");
-// res.send(registerUser);
-// })
-
 
 // Router use ................................
 app.use("/listing", listingRouter);
@@ -116,16 +107,6 @@ app.all("*", (req, res, next) => {
 app.use((err, req, res, next) => {
     let { status = 500, message = "something went worng" } = err;
     // res.status(status).send(message);
-    console.log(message)
     res.render("error.ejs", { message })
     
 })
-
-
-
-
-
-
-
-
-
