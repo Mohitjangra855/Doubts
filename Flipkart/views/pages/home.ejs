@@ -1,0 +1,16 @@
+<% layout("/boilerplate/boilerplates") %>
+  <div class="row mt-2 row-cols-lg-4 row-cols-md-3 row-cols-sm-3 row-cols-1">
+    <% for(items of data){ %>
+      <div class="card col m-1">
+        <img src="<%= items.image  %>" class="card-img-bottom-0" alt="...">
+        <div class="card-body">
+          <p class="card-text">
+            <%= items.name %>
+          </p>
+          <p class="card-text">
+            <i class="fa-solid fa-indian-rupee-sign"></i> <%= items.price %>
+          </p>
+        </div>
+      </div>
+      <% } %>
+  </div>
