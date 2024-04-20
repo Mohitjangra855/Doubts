@@ -6,6 +6,8 @@ const port = 8080;
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const Product = require("./models/Product");
+const ExpressError = require("./utils/ExpressError");
+const wrapAsync = require("./utils/wrapAsync");
 
 //////////////////////////////////////////////////////////
 app.use(methodOverride("_method"));
@@ -27,8 +29,40 @@ async function main() {
 app.listen(port, () => {
     console.log("-------------------------------------------")
 })
+// search and home page.....................
+app.get("/", wrapAsync(async (req, res) => {
+    let { search } = req.query;
+    let allProduct = await Product.find();
+    let searched = search
+        ? allProduct.filter((items) => items.company.toLowerCase() === search.toLowerCase())
+        : allProduct;
+    res.render("pages/home.ejs", { data: searched });
+    console.log(searched)
 
-app.get("/", async(req, res) => {
-    let data = await Product.find();
-    res.render("pages/home.ejs",{data})
-})  
+}))
+//Show deatils.............................
+app.get("/:id/:mainId",wrapAsync(async (req, res) => {
+    let { mainId } = req.params;
+    let showProduct = await Product.findById(mainId)
+    res.render("pages/show.ejs", { showProduct })
+    console.log(showProduct)
+
+}))
+// login........................................
+app.get("/login",(req,res)=>{
+    res.send("working signup");
+})
+// signup.....................................
+app.get("/signup",(req,res)=>{
+    res.render("pages/signup.ejs");
+})
+
+
+
+app.all("*", (req, res, next) => {
+    next(new ExpressError(404, "page not found!"));
+})
+app.use((err, req, res,next) => {
+    let { status=400, message="page not found.....!" } = err;
+ res.status(status).render("pages/error.ejs", { err })
+})

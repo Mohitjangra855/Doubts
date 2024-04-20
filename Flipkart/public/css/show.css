@@ -1,0 +1,92 @@
+.main-div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.product-image {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.product-image>div {
+    width: 100%;
+    background-color: red;
+}
+
+.product-image>div>button {
+    height: 4rem;
+    width: 50%;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    background-color: #ff9f00;
+}
+
+.main-div .product-image div button:nth-child(2) {
+    background-color: #fb641b ;
+}
+
+.product-image>img {
+    height: 25rem;
+    width: 100%;
+}
+
+.product-info {
+    padding: 1rem 1rem;
+}
+
+.product-info h4 {
+    font-size: 1.2rem;
+    color: gray;
+}
+
+.coustom-card-body>h5 {
+    width: 100%;
+    font-size: 1rem;
+    margin: 0;
+
+}
+
+.coustom-card-body>h6 span {
+    text-decoration: line-through;
+    color: gray;
+
+}
+
+.coustom-card-body .green {
+    color: green;
+    margin: 0;
+}
+
+.coustom-card-body .p {
+    color: blue;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.coustom-card-body .p img {
+    width: 4rem;
+    height: 1rem;
+}
+
+.coustom-card-body ul>b {
+    font-size: 1rem;
+}
+
+.coustom-card-body ul li {
+    font-size: 0.8rem;
+    list-style: none;
+}
+
+.coustom-card-body ul li>img {
+    width: 1rem;
+    margin-right: 0.5rem;
+}
+
+.coustom-card-body ul li span {
+    color: blue;
+    font-weight: 600;
+}

@@ -1,7 +1,9 @@
 body {
     background-color: #f1f2f4;
 }
-
+.container{
+    max-width: 1337px;
+}
 nav {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
@@ -47,6 +49,16 @@ nav .search-box {
 }
 nav .dropdown{
     padding-left: 0;
+}
+nav .dropdown>a{
+    text-decoration: none;
+    color: black;
+    margin: 0;
+    padding: 0.6rem;
+}
+nav .dropdown>a:hover{
+  border: 1px solid black;
+  border-radius: 5px;
 }
 nav .dropdown-menu {
     width: 300px;

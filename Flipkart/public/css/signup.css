@@ -1,0 +1,104 @@
+/* Google font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+
+.main-div {
+    font-size: 16px;
+    display: grid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 700px;
+}
+
+.main-div .part1 {
+    position: relative;
+    border-radius: 5px 0px 0px 5px;
+    color: white;
+    width: 25%;
+    height: 70%;
+    padding: 2rem;
+    font-size: 1.8em;
+    background-color: #2874f0;
+
+}
+
+.main-div .part1 p {
+    opacity: 0.9;
+    font-size: 0.5em;
+}
+
+.main-div .part1 img {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+.main-div .part2 {
+    border-radius: 0px 5px 5px 0px;
+    width: 35%;
+    padding: 2rem;
+    height: 70%;
+    background-color: #fff;
+    box-shadow: -2px 0px 11px -1px black;
+}
+
+.main-div form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.main-div form>input {
+    border: none !important;
+    border-bottom: 1px solid #b7b7b7 !important;
+    border-radius: 0px !important;
+}
+
+.main-div form p {
+    font-size: 0.7em;
+
+}
+
+.main-div form p span {
+    color: #2874f0;
+
+}
+
+.main-div form button {
+    background-color: #fb641b !important;
+    color: #fff !important;
+}
+
+.main-div .part2>a {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: blue;
+    text-decoration: none;
+    margin-top: 0.5em;
+
+}
+
+.main-div .part2>a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width:900px) {
+    .main-div {
+        font-size: 13px;
+    }
+
+    .main-div .part1,
+    .main-div .part2 {
+        width: 50%;
+    }
+
+}

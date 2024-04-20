@@ -1,37 +1,43 @@
 <nav class="position-sticky top-0">
-    <div class="menu-icon"><i class="fa-solid fa-bars"></i></div> 
-        <p class="bar-icon"><i class="fa-solid fa-bars"></i></p>
-        <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
-            alt="LogoImage">
+    <div class="menu-icon"><i class="fa-solid fa-bars"></i></div>
+    <p class="bar-icon"><i class="fa-solid fa-bars"></i></p>
+   <a href="/"><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg"
+        alt="LogoImage"></a> 
+    <form action="/" method="get">
         <span class="search-box">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" name="search" id="search" placeholder="Search for Products,Brands and More"></span>
-        <ul class="dropdown mb-0">
-            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i
-                    class="fa-regular fa-circle-user"></i>&nbsp;&nbsp;Login</button>
-            <ul class="dropdown-menu">
-                <h6>New customer? &nbsp; &nbsp; &nbsp; <a href="#">Sign Up</a></h6>
-                <li class="dropdown-item">My Profile</li>
-                <li class="dropdown-item">Flipkart Plus Zone</li>
-                <li class="dropdown-item">Orders</li>
-                <li class="dropdown-item">Wishlist</li>
-                <li class="dropdown-item">Rewards</li>
-                <li class="dropdown-item">Gift Cards</li>
+            <input type="search" name="search" id="search" placeholder="Search for Products,Brands and More">
+        </span>
+    </form>
+    <ul class="dropdown mb-0">
+                <a href="/login" class="login">
+                    <i
+                class="fa-regular fa-circle-user"></i>&nbsp;&nbsp;Login
+                  </a>
+                  <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+        <ul class="dropdown-menu">
+            <h6>New customer? &nbsp; &nbsp; &nbsp; <a href="/signup">Sign Up</a></h6>
+            <li class="dropdown-item">My Profile</li>
+            <li class="dropdown-item">Flipkart Plus Zone</li>
+            <li class="dropdown-item">Orders</li>
+            <li class="dropdown-item">Wishlist</li>
+            <li class="dropdown-item">Rewards</li>
+            <li class="dropdown-item">Gift Cards</li>
+        </ul>
+    </ul>
+    <span><a href="#"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;<span>Cart</span></a></span>
+
+    <span> <a href="#"><i class="fa-solid fa-store"></i>&nbsp;&nbsp;<span>Become a Seller</span></a></span>
+
+    <ul class="hover mb-0">
+        <span><i class="fas fa-ellipsis-v"></i>
+            <ul class="hover-menu p-0">
+                <li class="hover-item"> <a href="#">Notification Preferences</a></li>
+                <li class="hover-item"><a href="#">24x7 Customer Care</a></li>
+                <li class="hover-item"><a href="#">Advertise</a></li>
+                <li class="hover-item"> <a href="#">Download App</a></li>
+
             </ul>
-        </ul>
-        <span><a href="#"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;<span>Cart</span></a></span>
-
-        <span> <a href="#"><i class="fa-solid fa-store"></i>&nbsp;&nbsp;<span>Become a Seller</span></a></span>
-
-        <ul class="hover mb-0">
-            <span><i class="fas fa-ellipsis-v"></i>
-                <ul class="hover-menu p-0">
-                    <li class="hover-item"> <a href="#">Notification Preferences</a></li>
-                    <li class="hover-item"><a href="#">24x7 Customer Care</a></li>
-                    <li class="hover-item"><a href="#">Advertise</a></li>
-                    <li class="hover-item"> <a href="#">Download App</a></li>
-
-                </ul>
-            </span>
-        </ul>
-    </nav>
+        </span>
+    </ul>
+</nav>

@@ -1,16 +1,22 @@
+<link rel="stylesheet" href="/css/home.css">
 <% layout("/boilerplate/boilerplates") %>
-  <div class="row mt-2 row-cols-lg-4 row-cols-md-3 row-cols-sm-3 row-cols-1">
+  <div class="main-div">
     <% for(items of data){ %>
-      <div class="card col m-1">
-        <img src="<%= items.image  %>" class="card-img-bottom-0" alt="...">
-        <div class="card-body">
-          <p class="card-text">
-            <%= items.name %>
-          </p>
-          <p class="card-text">
-            <i class="fa-solid fa-indian-rupee-sign"></i> <%= items.price %>
-          </p>
-        </div>
+      <a href="/<%= items.name %>/<%= items._id  %>" style="height:25rem" class="listing-link">
+    <div class="coustom-card">
+      <img src="<%= items.image  %>" alt="img" class="coustom-card-img">
+      <div class="coustom-card-body">
+        <h5 class="coustom-card-title"> <%= items.name %></h5>
+        <h6 class="coustom-card-price"><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;<%= items.price %> <span><%= items.price*2 %></span><p class="discount"></p></h6>
       </div>
-      <% } %>
+    </div>
+    <% } %>
   </div>
+ <script>
+  let discount = document.querySelectorAll(".discount");
+  for (dis of discount) {
+  let randomNum = Math.floor(Math.random() * 20) + 10;
+  dis.innerText = +randomNum+"% off";
+  }
+
+ </script>
