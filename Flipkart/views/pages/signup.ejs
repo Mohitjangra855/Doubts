@@ -2,20 +2,21 @@
     <link rel="stylesheet" href="/css/signup.css">
     <div class="main-div">
         <div class="part1">
-            <h3>Sign up</h3>
-            <p>Get access to your Orders, Wishlist and Recommendations</p>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzuAY00M4q8v7mTcTcvu5gUet4-hitHwtAKA&s"
+            <h3>Looks like you're new here!</h3>
+            <p>Sign up with your mobile number to get started</p>
+            <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png"
                 alt="">
         </div>
         <div class="part2">
-            <form action="/">
-                <input type="text" class="form-control" placeholder="Enter Your name" name="user[name]">
-                <input type="text" class="form-control" placeholder="Enter Email" name="user[email]">
-                <input type="text" class="form-control" placeholder="Enter Password" name="user[password]">
-                <p>By continuing,you agree to Flipkart's <span>Terms of Use</span> and <span>Privacy Policy.</span></p>
+            <form action="/signup" method="post" class="needs-validation" novalidate>
+                <input type="text" class="form-control" placeholder="Enter Your name" name="user[name]" required>
+                <input type="text" class="form-control" placeholder="Enter Email" name="user[email]" required>
+                <input type="text" class="form-control" placeholder="Enter Password" name="user[password]" required>
+                <p>By continuing,you agree to Flipkart's <a href="https://www.flipkart.com/pages/terms">Terms of Use</a>
+                    and <a href="https://www.flipkart.com/pages/privacypolicy">Privacy Policy.</a></p>
                 <button type="submit" class="btn">Sign up</button>
 
             </form>
-          <a href="/login">Existing User? Log in</a>
+            <a href="/login">Existing User? Log in</a>
         </div>
     </div>

@@ -2,7 +2,7 @@
 <% layout("/boilerplate/boilerplates") %>
   <div class="main-div">
     <% for(items of data){ %>
-      <a href="/<%= items.name %>/<%= items._id  %>" style="height:25rem" class="listing-link">
+      <a href="/flipkart/<%= items.name %>/<%= items._id  %>" style="height:25rem" class="listing-link">
     <div class="coustom-card">
       <img src="<%= items.image  %>" alt="img" class="coustom-card-img">
       <div class="coustom-card-body">
