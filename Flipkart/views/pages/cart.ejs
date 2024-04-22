@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="/css/cart.css">
+<% layout("/boilerplate/boilerplates") %>
+    <div class="main-div">
+        <div class="main-div-top">
+            <span>Flipkart (1)</span><span>Grocery</span>
+        </div>
+        <% if(!user) {%>
+            <div class="data-div">
+                <img src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+                    alt="img">
+                <h4>Your cart is empty!</h4>
+                <p>Add items to it now.</p>
+                <a href="#">Shop now</a>
+            </div>
+            <% }else{ %>
+
+                <!-- else -->
+                <% for(item of user.addCart) {%>
+                <div class="products">
+                    <img src="<%= item.image %>"
+                        alt="img">
+                    <div class="details">
+                        <h4><%= item.name %></h4>
+                        <p style="color: gray;">Seller: <%= item.company %></p>
+                        <h4><span><i class="fa-solid fa-indian-rupee-sign"></i><%= items.price*2 %></span>&nbsp;<i class="fa-solid fa-indian-rupee-sign"></i> <%= item.price %>&nbsp;<p class="discount"></p></h4>
+                     <form action="/flipkart/cart/<%= item._id %>?_method=delete" method="post">
+                            <button>remove</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="order-button">
+                    <a href="#">Place Order</a>
+                </div>
+                <hr>
+                <% } %>
+                <% } %>
+    </div>
+    <script>
+        let discount = document.querySelectorAll(".discount");
+        for (dis of discount) {
+        let randomNum = Math.floor(Math.random() * 20) + 10;
+        dis.innerText = +randomNum+"% off";
+        }
+      
+       </script>

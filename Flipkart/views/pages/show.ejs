@@ -3,8 +3,11 @@
     <div class="main-div mt-2 mb-2">
         <div class="product-image">
             <img src="<%= showProduct.image  %>" alt="img">
-            <div><button><i class="fa-solid fa-cart-shopping"></i>&nbsp;Add To Cart</button><button><i
-                        class="fa-solid fa-bolt-lightning"></i>&nbsp;Buy Now</button>
+            <div>
+                <form action="/flipkart/<%= showProduct.name %>/<%= showProduct._id  %>" method="post">
+                    <button><i class="fa-solid fa-cart-shopping"></i>&nbsp;Add To Cart</button>
+                </form>
+                <button><i class="fa-solid fa-bolt-lightning"></i>&nbsp;Buy Now</button>
             </div>
         </div>
         <div class="product-info">
@@ -43,14 +46,17 @@
                     <li> <img
                             src="https://rukminim2.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90"
                             alt="img"><b>Bank Offer</b>&nbsp;Get extra 20% off (price inclusive of cashback/coupon)
-                        <span>T&C</span> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>+21 more offers</span></li>
+                        <span>T&C</span> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>+21 more offers</span>
+                    </li>
 
                 </ul>
             </div>
-            <div class="Details"><%= showProduct.details  %></div>
+            <div class="Details">
+                <%= showProduct.details %>
+            </div>
         </div>
     </div>
-    </div>
+
     <script>
         let discount = document.querySelectorAll(".discount");
         for (dis of discount) {

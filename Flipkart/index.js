@@ -17,6 +17,17 @@ const User = require("./models/user");
 const productRoutes = require("./routes/home");
 const userRoutes = require("./routes/user");
 
+////////////////////////mongoDb///////////////////////////
+
+main().then(() => {
+    console.log("............connected with database...............");
+})
+
+async function main() {
+    await mongoose.connect('mongodb://127.0.0.1:27017/Flipkart');
+}
+
+
 ////////////////////////Pages///////////////////////////
 
 app.use(methodOverride("_method"));
@@ -41,23 +52,16 @@ let sessionOption = {
 }
 app.use(Session(sessionOption))
 app.use(flash())
+
 /////////////////////////Passport////////////////////////
 
 app.use(passport.initialize());
 app.use(passport.session());
-
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-main().then(() => {
-    console.log("............connected with database...............");
-})
-
-async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/Flipkart');
-}
 
 app.listen(port, () => {
     console.log("-------------------------------------------")
@@ -65,6 +69,7 @@ app.listen(port, () => {
 
 app.use((req, res, next) => {
     res.locals.errorMsg = req.flash("error");
+    res.locals.successMsg = req.flash("success");
     next();
 })
 
@@ -73,11 +78,11 @@ app.get("/demouser", async (req, res) => {
         email: "new@gmail.com",
         username: "hello"
     })
-    let newUser = await User.register(fakeUser, "hello");
+    let newUser = await User.register(fakeUser, "bnm");
     res.send(`${newUser}`)
 })
 
-app.use("/flipkart/", productRoutes)
+app.use("/flipkart", productRoutes)
 app.use("/", userRoutes)
 
 

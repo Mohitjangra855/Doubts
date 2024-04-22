@@ -13,7 +13,11 @@ router.post("/login",  passport.authenticate("local",
 req.flash("success","Welcome Back to Flipkart");
 res.redirect("/flipkart")
 })
-
+//
+// router.post("/login", passport.authenticate("local", { failureRedirect: "/login"}), async (req, res) => {
+//     req.flash("success", "Welcome Back to Flipkart");
+//     res.redirect("/flipkart");
+// });
 // signup.....................................
 router.get("/signup", (req, res) => {
     res.render("pages/signup.ejs");
