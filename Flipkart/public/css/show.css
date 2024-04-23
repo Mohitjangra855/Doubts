@@ -1,6 +1,8 @@
 .main-div {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    font-size: 16px;
+    align-items: center;
 }
 
 .product-image {
@@ -16,11 +18,12 @@
     background-color: red;
 }
 
-.product-image>div>form{
+.product-image>div>form {
     width: 50%;
 }
+
 .product-image>div>form button {
-    height: 4rem;
+    height: 4em;
     width: 100%;
     color: #fff;
     font-weight: 600;
@@ -31,8 +34,8 @@
 }
 
 .main-div .product-image div>button {
-    background-color: #fb641b ;
-    height: 4rem;
+    background-color: #fb641b;
+    height: 4em;
     width: 50%;
     color: #fff;
     font-weight: 600;
@@ -42,22 +45,22 @@
 }
 
 .product-image>img {
-    height: 25rem;
+    height: 25em;
     width: 100%;
 }
 
 .product-info {
-    padding: 1rem 1rem;
+    padding: 1em 1em;
 }
 
 .product-info h4 {
-    font-size: 1.2rem;
+    font-size: 1.2em;
     color: gray;
 }
 
 .coustom-card-body>h5 {
     width: 100%;
-    font-size: 1rem;
+    font-size: 1em;
     margin: 0;
 
 }
@@ -75,30 +78,62 @@
 
 .coustom-card-body .p {
     color: blue;
-    font-size: 0.8rem;
+    font-size: 0.8em;
     font-weight: 600;
 }
 
 .coustom-card-body .p img {
-    width: 4rem;
-    height: 1rem;
+    width: 4em;
+    height: 1em;
 }
 
 .coustom-card-body ul>b {
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 .coustom-card-body ul li {
-    font-size: 0.8rem;
+    font-size: 0.8em;
     list-style: none;
 }
 
 .coustom-card-body ul li>img {
-    width: 1rem;
-    margin-right: 0.5rem;
+    width: 1em;
+    margin-right: 0.5em;
 }
 
 .coustom-card-body ul li span {
     color: blue;
     font-weight: 600;
+}
+
+@media (max-width:1000px) {
+    .main-div {
+        grid-template-columns: 1fr;
+        font-size: 12px;
+    }
+
+    .product-image {
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-image>img,
+    .product-image>div {
+        width: 80%;
+    }
+
+}
+
+@media (max-width:600px) {
+    .main-div {
+        grid-template-columns: 1fr;
+    }
+    .product-image {
+        width: 100%;
+    }
+    .product-image>img,
+    .product-image>div {
+        width: 100%;
+    }
 }

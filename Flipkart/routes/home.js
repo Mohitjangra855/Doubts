@@ -3,6 +3,7 @@ const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync");
 const Product = require("../models/Product");
 const User = require("../models/user.js")
+const { isLoggedIn } = require("../middleware");
 
 
 // search and home page.....................
@@ -33,7 +34,7 @@ router.get("/:name/:mainId", wrapAsync(async (req, res) => {
 
 }))
 // show product in cart
-router.get("/cart", wrapAsync(async (req, res) => {
+router.get("/cart",isLoggedIn, wrapAsync(async (req, res) => {
     if (req.user) {
         let { _id } = req.user;
         let user = await User.findById(_id).populate("addCart")
@@ -63,12 +64,12 @@ router.post("/:name/:mainId", wrapAsync(async (req, res) => {
 
 }))
 // destroy product in cart
-router.delete("/cart/:id", async (req, res) => {
+router.delete("/cart/:productId", async (req, res) => {
     let { productId } = req.params;
     let { _id } = req.user;
-  let a =  await User.findByIdAndUpdate(_id,{$pull:{addCart:productId}});
-  console.log(a);
-    req.flash("success","Item Successfully removed from Cart")
+    let a = await User.findByIdAndUpdate(_id, { $pull: { addCart: productId } });
+    console.log(a);
+    req.flash("success", "Item Successfully removed from Cart")
     res.redirect("/flipkart/cart")
 })
 

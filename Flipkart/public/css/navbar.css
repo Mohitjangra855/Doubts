@@ -17,7 +17,7 @@ nav {
     gap: 1rem;
     padding: 1rem 0rem;
     background: #ffffff;
-    z-index: 1;
+    z-index: 3;
 }
 nav .menu-icon{
     display: none;
@@ -58,10 +58,11 @@ nav .dropdown{
 }
 nav .dropdown>a{
     text-decoration: none;
-    color: black;
+    color: #000;
     margin: 0;
     padding: 0.6rem;
 }
+
 nav .dropdown>a:hover{
   border: 1px solid black;
   border-radius: 5px;
@@ -140,12 +141,31 @@ nav .hover {
     }
     
 }
-@media(max-width:730px) {
-
+@media(max-width:753px) {
+    
     nav .menu-icon{
         display: block;
     }
     nav .search-box{
         display: none;
+    }
+}
+@media(max-width:550px) {
+    nav{
+        gap: 0;
+    }
+    nav .dropdown>a{
+        padding: 0;
+        padding-left: 1em;
+    }
+    nav .dropdown>button{
+        padding: 0;
+        padding-right: 0.6em;
+    }
+    nav .dropdown>a span{
+    display: none;
+    }
+    nav>a>img{
+        width: 130px;
     }
 }

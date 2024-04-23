@@ -1,3 +1,20 @@
+<style>
+    .alert{
+        font-size: 16px;
+        width: fit-content;
+        margin: 0 auto;
+        position: absolute;
+        top: 76px;
+        z-index: 2;
+        left: 40vw;
+    }
+    @media (max-width:600px) {
+      .alert{
+        font-size: 10px;
+      }  
+    }
+
+</style>
 <% if(errorMsg.length) {%>
     <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
         <%= errorMsg %>
