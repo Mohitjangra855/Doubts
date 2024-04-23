@@ -9,7 +9,7 @@ const mongoStore = require("connect-mongo")
 
 const dbUrl = process.env.ATLASDB_URL;
 
-
+// const dbUrl = 'mongodb://127.0.0.1:27017/Flipkart';
 main()
     .then(() => {
         console.log("connected to DB");
@@ -33,7 +33,7 @@ store.on("error",()=>{
     console.log("Session Store Error!"+ err);
 })
 
-async function insertData() {
+ const insertData = () =>{
      Product.deleteMany({}).then(()=>{
         console.log("old data deleted");
     })
@@ -42,4 +42,14 @@ async function insertData() {
     })
 
 }
+const initDB = async () => {
+    await Listing.deleteMany({});
+    // initData.data = initData.data.map((obj) => ({ ...obj, owner: "65f144c2e57cd2c28ded4f87" }))
+    initData.data = initData.data.map((obj) => ({ ...obj, owner: "66013415dae7efb0da828663" }))
+    // initData.data = initData.data.map((obj) => ({ ...obj, geometry: { type: 'Point', coordinates: [ 77.209006, 28.613895 ] },}))
+  
+    await Listing.insertMany(initData.data);
+    console.log("data was initialized");
+  };
+  
 insertData();
