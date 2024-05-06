@@ -7,7 +7,7 @@ const Product = require("../models/Product");
 const Data = require("./data")
 
 
-// const dbUrl = 'enter your atlas mongodb url and run to insitilized this data in your online mongodb then you run main index.js of flipkart project when you find data.....
+// const dbUrl = 'mongodb+srv://mohit:bangbang@cluster0.aq7nqi5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 const dbUrl = 'mongodb://127.0.0.1:27017/Flipkart';
 main()
@@ -24,6 +24,7 @@ async function main() {
 
 const insertData = async () => {
     await Product.deleteMany({})
+    Data.data = Data.data.map((obj) => ({ ...obj, seller: "663897d0560e873bb5496eb5" }))
     await Product.insertMany(Data.data)
     console.log("data uploaded succesfully")
 }

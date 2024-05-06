@@ -18,23 +18,80 @@ router.get("/", wrapAsync(async (req, res) => {
         res.redirect("/flipkart")
     }
     res.render("pages/home.ejs", { data: searched });
-    // console.log(searched)
 
 }))
+// new item...................
+router.get("/new", (req, res) => {
+    res.render("pages/new.ejs")
+})
+// router.post("/", wrapAsync(async (req, res) => {
+//     const newProduct = new Product(req.body.item);
+//     newProduct.seller = req.user._id;
+//     const { details } = req.body;;
+//     let array = details.split(","); // Split the string at commas
+//     newProduct.details = array
+//     await newProduct.save();
+//     res.redirect("/flipkart")
+// }))
+
+router.post("/", wrapAsync(async (req, res) => {
+    const {details} = req.body.item;//suppose item[details] name se aapne field create ki hai
+    let descs = details.split(",")
+        const newProduct = new Product(req.body.item);
+      newProduct.descs = descs; //newProduct.descs is array of all description in Product model
+        newProduct.seller = req.user._id;
+        await newProduct.save();
+        console.log(newProduct);
+        res.redirect("/flipkart")
+    }))
+
+
 //Show deatils.............................
 router.get("/:name/:mainId", wrapAsync(async (req, res) => {
     let { mainId } = req.params;
-    let showProduct = await Product.findById(mainId)
+    let showProduct = await Product.findById(mainId).populate("seller")
     if (!showProduct) {
         req.flash("error", "Product not found!")
         res.redirect("/")
     }
+    console.log(showProduct)
     res.render("pages/show.ejs", { showProduct })
-    // console.log(showProduct)
 
 }))
+
+//edit product..................................
+router.get("/:name/:mainId/edit", wrapAsync(async (req, res) => {
+    let { mainId } = req.params
+    let editData = await Product.findById(mainId);
+    res.render("pages/edit.ejs", { editData })
+
+}))
+
+router.put("/:name/:mainId", wrapAsync(async (req, res) => {
+    let { mainId } = req.params
+    let editData = await Product.findByIdAndUpdate(mainId, { ...req.body.item });
+    req.flash("success", "Item successfully updated")
+    res.redirect(`/flipkart/${editData.name}/${editData._id}`)
+}))
+
+//delete product ........................................
+router.delete("/:name/:mainId", wrapAsync(async (req, res) => {
+    let { mainId } = req.params
+    let deleteData = await Product.findByIdAndDelete(mainId);
+    req.flash("success", "Product successfully delete")
+    res.redirect("/flipkart")
+}))
+
+
+
+
+
+
+
+
+//-----------------------------------------------------------------------------------------------
 // show product in cart
-router.get("/cart",isLoggedIn, wrapAsync(async (req, res) => {
+router.get("/cart", isLoggedIn, wrapAsync(async (req, res) => {
     if (req.user) {
         let { _id } = req.user;
         let user = await User.findById(_id).populate("addCart")
@@ -57,7 +114,6 @@ router.post("/:name/:mainId", wrapAsync(async (req, res) => {
         let user = await User.findById(_id);
         user.addCart.push(mainId)
         await user.save();
-        console.log(user)
         req.flash("success", "item Added in cart")
         res.redirect(`/flipkart/${name}/${mainId}`);
     }

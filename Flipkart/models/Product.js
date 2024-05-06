@@ -17,10 +17,20 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    details: {
-        type: String,
-        required: true
+    details:
+        [
+            {
+                type: String,
+                required: true
 
+            },
+        ],
+    category: {
+        type: String,
+    },
+    seller: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
 })
 

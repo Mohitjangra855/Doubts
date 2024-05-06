@@ -57,6 +57,14 @@
     font-size: 1.2em;
     color: gray;
 }
+.product-info>ul p{
+   line-height: 2.5em;
+}
+.product-info>ul>li{
+    line-height: 1.5em;
+  margin-left: 1em;
+color: gray;
+}
 
 .coustom-card-body>h5 {
     width: 100%;

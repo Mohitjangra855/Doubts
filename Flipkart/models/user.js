@@ -7,6 +7,9 @@ const userSchema = new Schema({
         type: String,
         require: true,
     },
+    howAreYou: {
+        type: String
+    },
     addCart: [
         {
             type: Schema.Types.ObjectId,

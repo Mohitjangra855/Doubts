@@ -27,16 +27,20 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <% if(!currUser) {%>
-                        <h6>New customer? &nbsp; &nbsp; &nbsp;
+                            <h6>New customer? &nbsp; &nbsp; &nbsp;
                                 <a href="/signup" style="position: absolute;z-index: 100000;right: 0.2rem;">Sign Up</a>
                             </h6>
                             <% } %>
-                        <li><a class="dropdown-item" href="#">My Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Flipkart Plus Zone</a></li>
-                        <li><a class="dropdown-item" href="#">Orders</a></li>
-                        <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                        <li><a class="dropdown-item" href="#">Rewards</a></li>
-                        <li><a class="dropdown-item" href="#">Gift Cards</a></li>
+                                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Flipkart Plus Zone</a></li>
+                                <li><a class="dropdown-item" href="#">Orders</a></li>
+                                <li><a class="dropdown-item" href="#">Wishlist</a></li>
+                                <li><a class="dropdown-item" href="#">Rewards</a></li>
+                                <li><a class="dropdown-item" href="#">Gift Cards</a></li>
+                                <% if(currUser && currUser.howAreYou.toLowerCase()==="seller" ){ %>
+                                    <li><a class="dropdown-item" href="/flipkart/new">Add new items</a></li>
+                                    <% } %>
+
                     </ul>
     </ul>
     <span><a href="/flipkart/cart"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;<span>Cart</span></a></span>
@@ -50,7 +54,6 @@
                 <li class="hover-item"><a href="#">24x7 Customer Care</a></li>
                 <li class="hover-item"><a href="#">Advertise</a></li>
                 <li class="hover-item"> <a href="#">Download App</a></li>
-
             </ul>
         </span>
     </ul>

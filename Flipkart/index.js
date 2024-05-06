@@ -23,9 +23,8 @@ const productRoutes = require("./routes/home");
 const userRoutes = require("./routes/user");
 
 ////////////////////////mongoDb///////////////////////////
- const dbUrl = 'mongodb://127.0.0.1:27017/Flipkart';
+const dbUrl = 'mongodb://127.0.0.1:27017/Flipkart';
 // const dbUrl = process.env.ATLASDB_URL
-
 main().then(() => {
     console.log("............connected with database...............");
 })
