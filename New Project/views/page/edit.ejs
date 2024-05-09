@@ -1,0 +1,63 @@
+<% layout("boilerplate/boilerplate") %>
+<link rel="stylesheet" href="/css/login.css">
+<div class="main-div">
+    <h1 style="text-align: center; font-size:1.4em">Edit Employee Data</h1>
+    <form action="/employee/<%= employee._id %>/edit?_method=PUT" method="post" class="needs-validation" style="line-height: 2em;" novalidate>
+        <div>
+            <label for="name" class="form-label" >Name:</label>
+            <input type="text" id="username" name="employee[name]" placeholder="Enter your name" class="form-control" value="<%= employee.name  %>" required>
+            <div class="valid-feedback">Looks good...</div>
+            <div class="invalid-feedback">Enter Name plz!</div>
+
+        </div>
+        <div>
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" name="employee[email]" class="form-control" value="<%= employee.email  %>" required>
+            <div class="valid-feedback">Looks good...</div>
+            <div class="invalid-feedback">Enter email plz!</div>
+
+        </div>
+        <div>
+            <label for="number" class="form-label">Mobile No:</label>
+            <input type="text" id="number" placeholder="Enter your number" name="employee[number]" class="form-control" value="<%= employee.number  %>" required>
+            <div class="valid-feedback">Looks good...</div>
+            <div class="invalid-feedback">Enter Mobile No. plz!</div>
+        </div>
+        <div>
+            <label for="designation" class="form-label">Designation:</label>
+            <select name="employee[designation]" class="form-select" id="designation"  required>
+                <option disabled value="">Select here..</option>
+                <option value="HR" <% if(employee.designation === 'HR') { %> selected <% } %>>HR</option>
+                <option value="Sales" <% if(employee.designation === 'Sales') { %> selected <% } %>>Sales</option>
+                <option value="Manager" <% if(employee.designation === 'Manager') { %> selected <% } %>>Manager</option>
+            </select>
+            <div class="valid-feedback">Looks good...</div>
+            <div class="invalid-feedback">Select Designation plz!</div>
+        </div>
+        <div class="gender">
+            <label class="form-label me-4">Gender:</label>
+            <input type="radio" id="male" name="employee[gender]" value="male" <% if(employee.gender === "male"){ %> checked <% } %>>
+            <label for="male" >Male</label>
+            <input type="radio" id="female" name="employee[gender]" value="female" <% if(employee.gender === "female"){ %> checked <% } %>>
+            <label for="female">Female</label>
+        </div>
+        <div>
+            <label for="course" class="form-label">Course:</label>
+            <select name="employee[course]" class="form-select" id="course" required >
+                <option  disabled value="">Select here..</option>
+                <option value="MCA" <% if(employee.course === 'MCA') { %> selected <% } %>>MCA</option>
+                <option value="BCA" <% if(employee.course === 'BCA') { %> selected <% } %>>BCA</option>
+                <option value="BSC" <% if(employee.course === 'BSC') { %> selected <% } %>>BSC</option>
+            </select>
+            <div class="valid-feedback">Looks good...</div>
+            <div class="invalid-feedback">Select Course plz!</div>
+        </div>
+        <div>
+            <label for="form-label">Image:</label>
+            <input type="text" placeholder="Image link" class="form-control" name="employee[image]" id="image">
+        </div>
+
+        <button class="btn btn-success mt-3 mb-3">Save</button>
+    </form>
+
+</div>

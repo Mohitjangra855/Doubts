@@ -1,0 +1,99 @@
+/* home page */
+.home_page{
+    width: 100%;
+    height: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+} 
+/* employee list */
+table img {
+    width: 3em;
+    border-radius: 100%;
+}
+@media (max-width:500px) {
+    .table{
+        font-size: 12px;
+    }
+        
+    }
+
+/* Flash ejs */
+.alert{
+    font-size: 16px;
+width: fit-content;
+    margin: 0 auto;
+    position: absolute;
+    top: 76px;
+    z-index: 2;
+    left: 38vw;
+}
+@media (max-width:600px) {
+  .alert{
+    font-size: 10px;
+    left: 0;
+    width: 100%;
+  }  
+}
+
+/* Show page styling */
+.show-div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    box-shadow: 1px 5px 23px 4px rgba(133, 130, 130, 0.699);
+    color: lightblue;
+
+}
+
+
+
+.show-div .div-2 {
+    border-left: 2px solid black;
+    padding-left: 1em;
+    box-shadow: 1px 5px 23px 4px rgba(133, 130, 130, 0.699);
+}
+
+.show-div .div-2 h3 {
+    text-align: center;
+    line-height: 2em;
+    font-size: 2em;
+    box-shadow: 1px 5px 23px 4px rgba(133, 130, 130, 0.699);
+
+
+}
+
+.show-div .div-1 img {
+    width: 100%;
+    height: 100%;
+}
+
+
+@media (max-width:900px) {
+    .show-div {
+        font-size: 12px;
+    }
+}
+
+@media (max-width:700px) {
+    .show-div {
+        grid-template-columns: 1fr;
+        padding-top: 2em;
+    }
+   .show-div .div-1{
+       align-self: center;
+       justify-self: center;
+        }
+    .show-div .div-2{
+        box-shadow: none;
+        border-left: none;
+        padding-left: 0;
+    }
+    .show-div .div-1 img {
+        max-width: 300px;
+        max-height: 300px;
+        
+    }
+
+}
+

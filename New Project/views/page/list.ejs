@@ -1,0 +1,37 @@
+<% layout("boilerplate/boilerplate") %>
+    <a href="/employee/new">Create new employee:</a>
+    <table class="table table-bordered align-middle caption-top table-responsive text-center">
+        <caption>List of Employees:</caption>
+        <thead class="table-light">
+            <tr>
+                <th>id</th>
+                <th>image</th>
+                <th>name</th>
+                <th class="align-middle" colspan="4">action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% let a=0; %>
+                <% for(employees of employee){ %>
+                    <tr>
+                        <td>
+                            <%= ++a %>
+                        </td>
+                        <td><img class="userImage" src="<%= employees.image  %>" alt="employeeImage"></td>
+                        <td>
+                            <%= employees.name %>
+                        </td>
+                        <td>
+                            <%= employees.email %>
+                        </td>
+                        <td><a href="/employee/<%= employees._id %>/show">View more...</a></td>
+                        <td><a href="/employee/<%= employees._id  %>/edit" class="btn btn-success">Edit</a></td>
+                        <td>
+                            <form action="/employee/<%= employees._id  %>?_method=DELETE" method="post">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+        </tbody>
+    </table>

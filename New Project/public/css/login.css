@@ -1,0 +1,53 @@
+.body-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.body-container .main-div {
+    background-color: rgb(255, 255, 255);
+    padding: 3em;
+    box-shadow: 1px 1px 15px -4px black;
+    border-radius: 10px;
+    min-height: 500px;
+    min-width: 500px;
+}
+
+.body-container .main-div form{
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 80%;
+    
+
+
+}
+ 
+@media (max-width:580px) {
+    .body-container {
+        width: 100%;
+        height: auto;
+
+    }
+
+    .body-container .main-div {
+        box-shadow: none;
+        height: 100%;
+        width: 100%;
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        
+    }
+    .body-container .main-div form{
+        height: 50%;
+        }
+    .body-container .main-div input {
+        width: 100%;
+    }
+    .body-container .main-div .gender input{
+        width: min-content;
+    }
+}
