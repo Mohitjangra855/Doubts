@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !="production"){
+if (process.env.NODE_ENV != "production") {
     require('dotenv').config()
 }
 
@@ -15,6 +15,7 @@ const passport = require("passport")
 const LocalStrategy = require("passport-local")
 const User = require("./models/user")
 const ExpressError = require("./utils/ExpressError")
+const mongoStore = require("connect-mongo");
 
 
 
@@ -24,7 +25,8 @@ const employeeRoute = require("./routes/employee")
 
 // database connection.................
 
-const dbUrl = "mongodb://localhost:27017/assignment";
+// const dbUrl = "mongodb://localhost:27017/assignment";
+const dbUrl = process.env.ATLASDB_URL;
 
 main().then(() => {
     console.log("database connected")
@@ -37,6 +39,16 @@ async function main() {
 }
 
 //session........................
+const store = mongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+        secret: process.env.SECRET,
+    },
+    touchAfter: 24 * 3600,
+});
+store.on("error",()=>{
+    console.log("Session Store Error!"+ err);
+})
 
 const sessionOption = {
     secret: process.env.SECRET,

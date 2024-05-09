@@ -13,4 +13,6 @@ const storage = new CloudinaryStorage({
         folder: 'assignment',
         allowedFormats: ["png", "jpg"], // supports promises as well
     }
-  });
+});
+
+module.exports = { storage }

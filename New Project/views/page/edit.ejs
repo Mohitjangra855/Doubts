@@ -1,8 +1,7 @@
 <% layout("boilerplate/boilerplate") %>
-<link rel="stylesheet" href="/css/login.css">
 <div class="main-div">
     <h1 style="text-align: center; font-size:1.4em">Edit Employee Data</h1>
-    <form action="/employee/<%= employee._id %>/edit?_method=PUT" method="post" class="needs-validation" style="line-height: 2em;" novalidate>
+    <form action="/employee/<%= employee._id %>/edit?_method=PUT" method="post" enctype="multipart/form-data" class="needs-validation" style="line-height: 2em;" novalidate>
         <div>
             <label for="name" class="form-label" >Name:</label>
             <input type="text" id="username" name="employee[name]" placeholder="Enter your name" class="form-control" value="<%= employee.name  %>" required>
@@ -54,7 +53,7 @@
         </div>
         <div>
             <label for="form-label">Image:</label>
-            <input type="text" placeholder="Image link" class="form-control" name="employee[image]" id="image">
+            <input type="file" placeholder="Upload image" class="form-control" name="employee[image]" id="image">
         </div>
 
         <button class="btn btn-success mt-3 mb-3">Save</button>

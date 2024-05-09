@@ -19,11 +19,11 @@ router.route("/new").get(isLoggedIn, employeeController.renderNewForm)
     .post(isLoggedIn, upload.single('employee[image]'),validateEmployee, wrapAsync(employeeController.createEmployee));
 
 // view employee.....................
-router.get("/:id/show", employeeController.employeeList);
+router.get("/:id/show",wrapAsync(employeeController.employeeList));
 
 //Edit employee.......................
 router.route("/:id/edit").get(isLoggedIn, employeeController.editForm)
-    .put(isLoggedIn, wrapAsync(employeeController.updateEmployee));
+    .put(isLoggedIn,upload.single('employee[image]'), wrapAsync(employeeController.updateEmployee));
 
 //Delete employee......................
 router.delete("/:id", isLoggedIn, wrapAsync(employeeController.destroyEmployee));

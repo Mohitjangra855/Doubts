@@ -30,7 +30,7 @@ module.exports.createEmployee = async (req, res) => {
 }
 
 // view emplyee ................
-module.exports.employeeList= async (req, res) => {
+module.exports.employeeList = async (req, res) => {
     let employee = await Employee.findById(req.params.id)
     res.render("page/show.ejs", { employee });
 }
@@ -44,6 +44,12 @@ module.exports.editForm = async (req, res) => {
 //update employee................
 module.exports.updateEmployee = async (req, res) => {
     let employee = await Employee.findByIdAndUpdate(req.params.id, { ...req.body.employee })
+    if (req.file) {
+        let url = req.file.path;
+        let filename = req.file.filename;
+        employee.image = { url, filename };
+        await employee.save();
+    }
     req.flash("success", "Employee data successfully updated.")
     res.redirect("/employee/list");
 }
