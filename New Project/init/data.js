@@ -7,7 +7,10 @@ const employee = [
         gender: 'Male',
         course: 'BCA',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Emma Roberts',
@@ -17,7 +20,10 @@ const employee = [
         gender: 'Female',
         course: 'BCA',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Franklin Wright',
@@ -27,7 +33,10 @@ const employee = [
         gender: 'Male',
         course: 'BCA',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Grace Lee',
@@ -37,7 +46,10 @@ const employee = [
         gender: 'Female',
         course: 'MCA',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Henry Taylor',
@@ -47,7 +59,10 @@ const employee = [
         gender: 'Male',
         course: 'BSC',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Ivy Clark',
@@ -57,7 +72,10 @@ const employee = [
         gender: 'Female',
         course: 'MCA',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     // Add more users here...
     {
@@ -68,7 +86,10 @@ const employee = [
         gender: 'Male',
         course: 'MCA',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Kate Middleton',
@@ -78,7 +99,10 @@ const employee = [
         gender: 'Female',
         course: 'BSC',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Leonardo DiCaprio',
@@ -88,7 +112,10 @@ const employee = [
         gender: 'Male',
         course: 'MCA',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Marilyn Monroe',
@@ -98,7 +125,10 @@ const employee = [
         gender: 'Female',
         course: 'BCA',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Nelson Mandela',
@@ -108,7 +138,10 @@ const employee = [
         gender: 'Male',
         course: 'BSC',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Olivia Wilde',
@@ -118,7 +151,10 @@ const employee = [
         gender: 'Female',
         course: 'MCA',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Paul Walker',
@@ -128,7 +164,10 @@ const employee = [
         gender: 'Male',
         course: 'BCA',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     },
     {
         name: 'Queen Elizabeth',
@@ -138,7 +177,10 @@ const employee = [
         gender: 'Female',
         course: 'BSC',
         date: new Date(),
-        image: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg"
+        image: {
+            url: "https://res.cloudinary.com/dd3px2fki/image/upload/v1715257254/assignment/default.png",
+            filename: "default"
+        }
     }
 ]
 

@@ -1,6 +1,6 @@
 const ExpressError = require("./utils/ExpressError.js")
 
-const { userSchema, employeeSchema } = require("./middleware")
+const { userSchema, employeeSchema } = require("./schema")
 
 // login checking to create new listing
 module.exports.isLoggedIn = (req, res, next) => {

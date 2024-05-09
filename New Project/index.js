@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !="production"){
+    require('dotenv').config()
+}
+
 const express = require("express");
 const app = express();
 const port = 8080;
@@ -35,7 +39,7 @@ async function main() {
 //session........................
 
 const sessionOption = {
-    secret: "kkkkkkkkkkk",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {

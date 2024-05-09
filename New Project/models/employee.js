@@ -22,11 +22,9 @@ const employeeSchema = new Schema({
         type: String
     },
     image: {
-        type: String,
-        default: "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg",
-        set: (v) => v === "" ? "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg" : v
-
-    },
+        url: String,
+        filename: String
+},
     date: {
         type: Date,
         default: Date.now

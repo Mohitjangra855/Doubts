@@ -20,22 +20,16 @@ table img {
     }
 
 /* Flash ejs */
-.alert{
-    font-size: 16px;
-width: fit-content;
-    margin: 0 auto;
-    position: absolute;
-    top: 76px;
-    z-index: 2;
-    left: 38vw;
-}
-@media (max-width:600px) {
+
+@media (max-width:800px) {
+    table .table-hide{
+        display: none;
+    }
   .alert{
     font-size: 10px;
-    left: 0;
-    width: 100%;
+    width: 250px;
   }  
-}
+} 
 
 /* Show page styling */
 .show-div {

@@ -21,8 +21,10 @@ module.exports.renderNewForm = (req, res) => {
 
 //create employee.................
 module.exports.createEmployee = async (req, res) => {
-    let data = req.body.employee
+    const url = req.file.path;
+    const filename = req.file.filename;
     let newEmployee = new Employee(req.body.employee)
+    newEmployee.image = { url, filename }
     await newEmployee.save();
     res.redirect("/employee/list");
 }
