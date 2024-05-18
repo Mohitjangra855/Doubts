@@ -16,8 +16,7 @@
                 <div class="sellerAccessBtn d-flex justify-end align-items-end float-end gap-2" style="width: 150px;">
                     <a href="/flipkart/<%= showProduct.name %>/<%= showProduct._id  %>/edit"
                         class="btn btn-success ">Edit</a>
-                    <form action="/flipkart/<%= showProduct.name %>/<%= showProduct._id  %>?_method=DELETE"
-                        method="post">
+                    <form action="/flipkart/<%= showProduct._id  %>?_method=DELETE" method="post">
                         <button class="btn btn-danger">Delete</button>
                     </form>
                 </div>
@@ -72,9 +71,54 @@
                     <ul class="Details">
                         <p class="m-0">Product Details:</p>
                         <% for(item of showProduct.details){ %>
-                       <li><%= item  %></li>
-                       <% } %>
-                        </ul>
+                            <li>
+                                <%= item %>
+                            </li>
+                            <% } %>
+                    </ul>
+                    <!-- create review -->
+                    <% if(currUser){ %>
+                        <div class="review">
+                            <form action="/flipkart/<%= showProduct.name  %>/<%= showProduct._id  %>/review"
+                                method="post" class="needs-validation" novalidate>
+                                <textarea name="review[body]" class="form-control"
+                                    placeholder="Enter product review here" required></textarea>
+                                <input type="range" min="1" max="5" name="review[rating]">
+                                <button class="btn btn-outline-success">Add</button>
+                            </form>
+                            <% } %>
+                                <!-- review showing -->
+                                <% if(showProduct.review.length>0 ) { %>
+                                    <h5 class="mt-2">All Review:</h5>
+                                    <hr>
+                                    <div class="review-show">
+                                        <% for(reviews of showProduct.review){ %>
+                                            <div class="card mb-1" style="width: 17rem;">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">
+                                                        <%= reviews.author.username %>
+                                                    </h6>
+                                                    <h6 class="card-subtitle mb-2 text-body-secondary">
+                                                        Rated : <%= reviews.rating %> stars
+                                                    </h6>
+                                                    <p class="card-text">
+                                                        <%= reviews.body %>
+                                                    </p>
+                                                    <!-- delete review -->
+                                                    <% if(currUser && String(currUser._id) === String(reviews.author._id)){ %>
+                                                        <form
+                                                            action="/flipkart/<%= showProduct.name %>/<%= showProduct._id  %>/review/<%= reviews._id  %>?_method=DELETE"
+                                                            method="post">
+                                                            <button class="btn">Delete</button>
+                                                        </form>
+
+                                                        <% } %>
+                                                </div>
+                                            </div>
+                                            <% } %>
+                                    </div>
+                                    <% } %>
+                        </div>
         </div>
     </div>
 

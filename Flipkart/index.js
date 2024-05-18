@@ -19,8 +19,9 @@ const User = require("./models/user");
 
 ////////////////////////Routes//////////////////////////
 
-const productRoutes = require("./routes/home");
 const userRoutes = require("./routes/user");
+const productRoutes = require("./routes/home");
+const reviewRoutes = require("./routes/review");
 
 ////////////////////////mongoDb///////////////////////////
 const dbUrl = 'mongodb://127.0.0.1:27017/Flipkart';
@@ -104,8 +105,10 @@ app.get("/demouser", async (req, res) => {
     res.send(`${newUser}`)
 })
 
-app.use("/flipkart", productRoutes)
 app.use("/", userRoutes)
+app.use("/flipkart", productRoutes)
+app.use("/flipkart/:name/:id/review", reviewRoutes)
+
 
 
 app.all("*", (req, res, next) => {

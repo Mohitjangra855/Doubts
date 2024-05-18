@@ -9,6 +9,8 @@ body{
 
 .container{
     max-width: 1337px;
+    margin: 0 !important;
+    margin: 1rem 0 !important;
 }
 nav {
     font-family: Arial, Helvetica, sans-serif;

@@ -24,7 +24,7 @@ async function main() {
 
 const insertData = async () => {
     await Product.deleteMany({})
-    Data.data = Data.data.map((obj) => ({ ...obj, seller: "663897d0560e873bb5496eb5" }))
+    Data.data = Data.data.map((obj) => ({ ...obj, seller: "6638fe6d8ba4341cb493ea47" }))
     await Product.insertMany(Data.data)
     console.log("data uploaded succesfully")
 }
