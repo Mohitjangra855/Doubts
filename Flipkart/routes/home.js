@@ -3,7 +3,7 @@ const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync");
 const Product = require("../models/Product");
 const User = require("../models/user.js")
-const { isLoggedIn} = require("../middleware");
+const { isLoggedIn, validationProduct } = require("../middleware");
 
 
 // search and home page.....................
@@ -21,11 +21,11 @@ router.get("/", wrapAsync(async (req, res) => {
 
 }))
 // new item...................
-router.get("/new",isLoggedIn, (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
     res.render("pages/new.ejs")
 })
 
-router.post("/", isLoggedIn, wrapAsync(async (req, res) => {
+router.post("/", isLoggedIn, validationProduct, wrapAsync(async (req, res) => {
     const { details } = req.body.item;
     console.log("Original details:", details); // Log original details
     const descs = details.split(",").map(desc => desc.trim()); // Splitting by comma and trimming whitespace
@@ -58,7 +58,7 @@ router.get("/:name/:mainId", wrapAsync(async (req, res) => {
 }))
 
 //edit product..................................
-router.get("/:name/:mainId/edit",isLoggedIn,wrapAsync(async (req, res) => {
+router.get("/:name/:mainId/edit", isLoggedIn, wrapAsync(async (req, res) => {
     let { mainId } = req.params
     let editData = await Product.findById(mainId);
     res.render("pages/edit.ejs", { editData })
@@ -78,7 +78,7 @@ router.put("/:name/:mainId", isLoggedIn, wrapAsync(async (req, res) => {
 }))
 
 //delete product ........................................
-router.delete("/:mainId", isLoggedIn,  wrapAsync(async (req, res) => {
+router.delete("/:mainId", isLoggedIn, wrapAsync(async (req, res) => {
     let { mainId } = req.params
     let deleteData = await Product.findByIdAndDelete(mainId);
     req.flash("success", "Product successfully delete")
