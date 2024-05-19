@@ -3,7 +3,7 @@ const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync");
 const Product = require("../models/Product");
 const User = require("../models/user.js")
-const { isLoggedIn, validationProduct } = require("../middleware");
+const { isLoggedIn, validationProduct,isOwner } = require("../middleware");
 
 
 // search and home page.....................
@@ -65,6 +65,7 @@ router.get("/:name/:mainId/edit", isLoggedIn, wrapAsync(async (req, res) => {
 
 }))
 
+// use here isOwner function
 router.put("/:name/:mainId", isLoggedIn, wrapAsync(async (req, res) => {
     let { mainId } = req.params
     let details = req.body.item.details;
@@ -77,6 +78,7 @@ router.put("/:name/:mainId", isLoggedIn, wrapAsync(async (req, res) => {
     res.redirect(`/flipkart/${editData.name}/${editData._id}`)
 }))
 
+// use here isOwner function
 //delete product ........................................
 router.delete("/:mainId", isLoggedIn, wrapAsync(async (req, res) => {
     let { mainId } = req.params
