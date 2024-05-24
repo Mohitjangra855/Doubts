@@ -2,57 +2,36 @@ const express = require("express");
 const passport = require("passport");
 const wrapAsync = require("../utils/wrapAsync");
 const router = express.Router();
-const User = require("../models/user")
 const { saveRedirectUrl } = require("../middleware.js")
 
-// login........................................
-router.get("/login", (req, res) => {
-    res.render("pages/login.ejs");
+// Controller....
+const userController = require("../controller/user.js")
+// user profile
+
+router.get("/profile", (req, res) => {
+    let user = req.user
+    res.render("pages/profile.ejs", { user });
+})
+router.put("/profile/:id", (req, res) => {
+    let editUser = req.body.user
+    console.log(editUser)
+    res.redirect("/profile");
 })
 
-router.post("/login", saveRedirectUrl,
-    passport.authenticate("local", {
-        failureRedirect: "/login", failureFlash: true
-    }), async (req, res) => {
-        req.flash("success", "Welcome Back to Flipkart");
-        let redirectURL = res.locals.redirectUrl || "/flipkart"
-        res.redirect(redirectURL)
-    })
+// Login Page And Login.....
+router.route("/login")
+    .get(userController.loginPage)
+    .post(saveRedirectUrl,
+        passport.authenticate("local", {
+            failureRedirect: "/login", failureFlash: true
+        }), userController.Login)
 
-// signup.....................................
-router.get("/signup", (req, res) => {
-    res.render("pages/signup.ejs");
-})
-router.post("/signup", wrapAsync(async (req, res) => {
-    try {
-        let { username, email, howAreYou, password } = req.body;
-        
-        const user = await User({ username, email, howAreYou });
-        const registerUser = await User.register(user, password)
-        req.login(registerUser, (err) => {
-            if (err) {
-                return next(err);
-            }
-            req.flash("success", "Welcome to Flipkart")
-            res.redirect("/flipkart");
-        })
-    } catch (err) {
-        req.flash("error", err.message);
-        res.redirect("/signup")
-
-    }
-}))
+// Signup Page And Signup......
+router.route("/signup")
+    .get(userController.signupPage)
+    .post(wrapAsync(userController.Signup))
 
 // Log out ...............
-
-router.get("/logout", (req, res) => {
-    req.logOut((err) => {
-        if (err) {
-            return next(err);
-        }
-        req.flash("success", "Logged Out Successfully")
-        res.redirect("/flipkart")
-    })
-})
+router.get("/logout", userController.Logout)
 
 module.exports = router;

@@ -130,6 +130,9 @@
     justify-content: center;
     gap: 1em;
 }
+.review textarea{
+    height: 7em;
+}
 
 .review hr {
     background-color: gray;

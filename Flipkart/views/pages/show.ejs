@@ -16,7 +16,7 @@
                 <div class="sellerAccessBtn d-flex justify-end align-items-end float-end gap-2" style="width: 150px;">
                     <a href="/flipkart/<%= showProduct.name %>/<%= showProduct._id  %>/edit"
                         class="btn btn-success ">Edit</a>
-                    <form action="/flipkart/<%= showProduct._id  %>?_method=DELETE" method="post">
+                    <form action="/flipkart/<%= showProduct.name %>/<%= showProduct._id  %>?_method=DELETE" method="post">
                         <button class="btn btn-danger">Delete</button>
                     </form>
                 </div>
@@ -81,12 +81,12 @@
                         <div class="review">
                             <form action="/flipkart/<%= showProduct.name  %>/<%= showProduct._id  %>/review"
                                 method="post" class="needs-validation" novalidate>
+                                <input type="range" min="1" max="5" name="review[rating]">
                                 <textarea name="review[body]" class="form-control"
                                     placeholder="Enter product review here" required></textarea>
-                                <input type="range" min="1" max="5" name="review[rating]">
-                                <button class="btn btn-outline-success">Add</button>
-                            </form>
-                            <% } %>
+                                    <button class="btn btn-outline-success">Add</button>
+                                </form>
+                                <% } %>
                                 <!-- review showing -->
                                 <% if(showProduct.review.length>0 ) { %>
                                     <h5 class="mt-2">All Review:</h5>

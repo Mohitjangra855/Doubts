@@ -10,6 +10,21 @@ const userSchema = new Schema({
     howAreYou: {
         type: String
     },
+    birthdate: {
+        type: Date
+    },
+    address: {
+        type: String
+    },
+    country: {
+        type: String
+    },
+    state: {
+        type: String
+    },
+    pincode: {
+        type: Number
+    },
     addCart: [
         {
             type: Schema.Types.ObjectId,

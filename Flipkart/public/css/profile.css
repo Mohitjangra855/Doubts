@@ -1,0 +1,29 @@
+.main-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+line-height: 2rem;
+}
+
+.main-div form {
+    width: 80vw;
+    max-width: 1000px;
+}
+
+.main-div>img {
+    border-radius: 100%;
+    max-width: 300px;
+}
+@media (max-width:500px) {
+    .main-div{
+        font-size: 14px;
+    }
+    .main-div input{
+        font-size: 14px;
+    }
+    .main-div>img {
+        border-radius: 100%;
+       width: 40%;
+    }
+    
+}

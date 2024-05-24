@@ -1,7 +1,7 @@
-const { productSchema } = require("./schema");
-const { reviewSchema } = require("./schema");
+const Product = require("./models/Product");
+// const { productSchema } = require("./schema");
+const { reviewSchema, productSchema } = require("./schema");
 const ExpressError = require("./utils/ExpressError");
-const Product = require("./models/Product")
 
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
@@ -20,14 +20,28 @@ module.exports.saveRedirectUrl = (req, res, next) => {
     }
     next();
 }
+
+// check the owner then give access ..
+module.exports.isOwner = async (req, res, next) => {
+    let { name, mainId } = req.params;
+    console.log(req.params)
+    let product = await Product.findById(mainId);
+    if (!product.seller._id.equals(req.user._id)) {
+        req.flash("error", "You don't have permission to proceed with the action !!");
+        return res.redirect(`/flipkart/${name}/${mainId}`);
+    } 
+    next()
+};
+
+
 // validation product schema..............
 module.exports.validationProduct = async (req, res, next) => {
-    let { error } = productSchema.validate(req.body);
+    let { error } = productSchema.validate(req.body)
     if (error) {
         let errMsg = error.details.map((el) => el.message).join(",");
-        throw new ExpressError(400, errMsg)
+        throw new ExpressError(400, errMsg);
     } else {
-        next();
+        next()
     }
 }
 // validation review Schema...................
@@ -40,14 +54,3 @@ module.exports.validationReview = async (req, res, next) => {
         next();
     }
 }
-
-// check the owner then give access ..
-module.exports.isOwner = async (req, res, next) => {
-    let { name, id } = req.params;
-    let product = await Product.findById(id);
-    if (!product.owner.equals(req.user._id)) {
-        req.flash("error", "You don't have permission to proceed with the action !!");
-        return res.redirect(`/flipkart/${name}/${id}`);
-    }
-    next();
-};

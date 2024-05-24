@@ -1,0 +1,75 @@
+<% layout("boilerplate/boilerplates.ejs") %>
+    <link rel="stylesheet" href="/css/profile.css">
+
+    <div class="main-div">
+        <img src="https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
+            alt="userImg">
+        <div>
+            <form action="/profile/<%= user._id %>?_method=PUT" method="post" class="needs-validation" novalidate
+                enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" disabled id="username" value="<%= user.username  %>"
+                            placeholder="Enter username" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a valid username.
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" name="user[email]" id="email" value="<%= user.email  %>"
+                            placeholder="Enter email" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a valid email.
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="birthdate">Birth date:</label>
+                    <input type="date" value="<%= user.birthdate  %>" class="form-control" name="user[birthdate]"
+                        id="birthdate" placeholder="Enter birthdate">
+                </div>
+                <div>
+                    <label for="address">Address:</label>
+                    <textarea class="form-control" name="user[address]" id="address"
+                        placeholder="Enter Address here:"><%= user.address  %> </textarea>
+                </div>
+                <div>
+                    <label for="country">Country:</label>
+                    <input type="text" class="form-control" value="<%= user.country  %>" name="user[country]"
+                        id="country" placeholder="Enter country">
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="state">State:</label>
+                        <input type="text" class="form-control" value="<%= user.state  %>" name="user[state]" id="state"
+                            placeholder="Enter state">
+
+                    </div>
+                    <div class="col-6">
+                        <label for="pincode">Pin code:</label>
+                        <input type="number" value="<%= user.pincode  %>" class="form-control" name="user[pincode]"
+                            id="pincode" placeholder="Enter pincode">
+
+                    </div>
+                </div>
+                <div>
+                    <label for="image">Image:</label>
+                    <input type="file" class="form-control" id="image" placeholder="upload your pofile photo"
+                        name="user[image]">
+                </div>
+                <div class="row justify-content-end">
+                    <div class="col">
+                        <button class="btn btn-outline-success float-end mt-2">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
