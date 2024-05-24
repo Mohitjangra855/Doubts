@@ -25,6 +25,16 @@ const userSchema = new Schema({
     pincode: {
         type: Number
     },
+    image: {
+        url: {
+            type: String,
+            default: "https://asset.cloudinary.com/dd3px2fki/c5daf5b32a1ae1dd301b7215395827e2"
+        },
+        filename: {
+            type: String,
+            default: "userDefault_pic"
+        },
+    },
     addCart: [
         {
             type: Schema.Types.ObjectId,

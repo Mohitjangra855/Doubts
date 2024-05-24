@@ -3,17 +3,30 @@ const passport = require("passport");
 const wrapAsync = require("../utils/wrapAsync");
 const router = express.Router();
 const { saveRedirectUrl } = require("../middleware.js")
+const multer = require("multer");
+
+// for upload file...........................
+const { storage } = require("../cloudConfig.js");
+const upload = multer({ storage });
+// upload.single('user[image]'),
 
 // Controller....
-const userController = require("../controller/user.js")
+const userController = require("../controller/user.js");
+const { findByIdAndUpdate } = require("../models/Product.js");
 // user profile
 
 router.get("/profile", (req, res) => {
     let user = req.user
     res.render("pages/profile.ejs", { user });
 })
-router.put("/profile/:id", (req, res) => {
-    let editUser = req.body.user
+router.put("/profile/:id",upload.single('user[image]'), async (req, res) => {
+    let { id } = req.params
+    let editUser = await findByIdAndUpdate(id, { ...req.body.user });
+    let filename = req.file.filename;
+    let url = req.file.url;
+    console.log(req.file);
+    editUser.image = { filename, url };
+    await editUser.save();
     console.log(editUser)
     res.redirect("/profile");
 })
