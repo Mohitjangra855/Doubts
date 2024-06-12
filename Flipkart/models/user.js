@@ -28,11 +28,11 @@ const userSchema = new Schema({
     image: {
         url: {
             type: String,
-            default: "https://asset.cloudinary.com/dd3px2fki/c5daf5b32a1ae1dd301b7215395827e2"
+            default: "https://res.cloudinary.com/dd3px2fki/image/upload/v1718039910/flipkart_project/aubze8wdizll0eq6n40i.jpg",
         },
         filename: {
             type: String,
-            default: "userDefault_pic"
+            default:"UserImage"
         },
     },
     addCart: [
