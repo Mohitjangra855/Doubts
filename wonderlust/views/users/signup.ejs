@@ -1,0 +1,24 @@
+
+<% layout("/layouts/boilerplate") %> <!--boiler plate cha layout paste kela-->
+
+<div class="row mt-3">
+    <h1 class="col-6 offset-3">Signup on Wonderlust</h1> <!--class=col-5 offset-3 dili mahnun username center madhe ale page var bgh-->
+<div class="col-6 offset-3">
+    <form action="/signup" method="post" class="needs-validation" novalidate> <!--/signup var post request pathavnar & class=need-validation ne bootstrp chi validation automatic apply honar & novalidate means apni validation by default apply na ho -->
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input name="username"  type="text" id="username" class="form-control" required>
+           <div class="valid-feedback"> looks good!</div> 
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input name="email"  type="email" id="email" class="form-control" required>       
+         </div>
+         <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input name="password"  type="password" id="password" class="form-control" required>       
+        </div>
+        <button class="btn btn-success">Signup</button>
+    </form>
+</div>
+ </div>

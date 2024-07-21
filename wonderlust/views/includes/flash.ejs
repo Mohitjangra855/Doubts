@@ -1,0 +1,16 @@
+<!--SUCCESS FLASH-->
+ <% if(success && success.length){ %>  <!--success exist karat asel tar && success.length asel tar ha div print kara success chi lenght greter than 0 asli pahije-->
+<div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+    <%= success %> <!--success variable la access kele jyala app.js la tyat res.locals.success madhe define kele ahe -->
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<% } %>
+
+<!-- ERROR FLASH  -->
+
+<% if(error && error.length){ %>  <!--error exist karat asel tar && error.length asel tar ha div print kara error chi length greter than 0 asli pahije-->
+    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+        <%= error %> <!--success variable la access kele jyala app.js la tyat res.locals.success madhe define kele ahe -->
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } %>
